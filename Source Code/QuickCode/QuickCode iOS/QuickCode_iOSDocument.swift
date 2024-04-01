@@ -8,21 +8,25 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
+//Get Custom Type For Document Creation
 extension UTType {
-    static var exampleText: UTType {
-        UTType(importedAs: "com.example.plain-text")
+    static var quickcodeText: UTType {
+        UTType(importedAs: "com.MSJ.QuickCode.text")
     }
 }
 
 struct QuickCode_iOSDocument: FileDocument {
     var text: String
 
-    init(text: String = "Hello, world!") {
+    //Set Text As Blank When Creating A New Document
+    init(text: String = "") {
         self.text = text
     }
 
-    static var readableContentTypes: [UTType] { [.exampleText] }
+    //Set Readable File Types
+    static var readableContentTypes: [UTType] { [.quickcodeText, .swiftSource, .plainText, .utf8PlainText, .utf16PlainText, .utf16ExternalPlainText, .utf8TabSeparatedText, .xml, .yaml, .json, .html, .assemblyLanguageSource, .cHeader, .cSource, .cPlusPlusHeader, .cPlusPlusSource, .objectiveCPlusPlusSource, .objectiveCSource, .appleScript, .javaScript, .shellScript, .pythonScript, .rubyScript, .perlScript, .phpScript] }
 
+    //Set How To Read Documents
     init(configuration: ReadConfiguration) throws {
         guard let data = configuration.file.regularFileContents,
               let string = String(data: data, encoding: .utf8)
@@ -32,6 +36,7 @@ struct QuickCode_iOSDocument: FileDocument {
         text = string
     }
     
+    //Set How To Write Documents
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         let data = text.data(using: .utf8)!
         return .init(regularFileWithContents: data)

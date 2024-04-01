@@ -17,7 +17,40 @@
 		D596C7492BBACC9F008D0E9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7482BBACC9F008D0E9A /* ContentView.swift */; };
 		D596C74B2BBACCA1008D0E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C74A2BBACCA1008D0E9A /* Assets.xcassets */; };
 		D596C74E2BBACCA1008D0E9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C74D2BBACCA1008D0E9A /* Preview Assets.xcassets */; };
+		D596C7562BBACE3B008D0E9A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D596C7552BBACE3B008D0E9A /* Settings.bundle */; };
+		D596C7592BBACF28008D0E9A /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D596C7582BBACF28008D0E9A /* CodeMirror-SwiftUI */; };
+		D596C75A2BBACF28008D0E9A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D596C7582BBACF28008D0E9A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D596C75D2BBACF2C008D0E9A /* SwiftUIPrint in Frameworks */ = {isa = PBXBuildFile; productRef = D596C75C2BBACF2C008D0E9A /* SwiftUIPrint */; };
+		D596C75F2BBACF40008D0E9A /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D596C75E2BBACF40008D0E9A /* CodeMirror-SwiftUI */; };
+		D596C7602BBACF40008D0E9A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D596C75E2BBACF40008D0E9A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D596C7632BBAD0C5008D0E9A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7622BBAD0C5008D0E9A /* SettingsView.swift */; };
+		D596C7652BBAD422008D0E9A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7642BBAD422008D0E9A /* SettingsView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D596C75B2BBACF28008D0E9A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D596C75A2BBACF28008D0E9A /* CodeMirror-SwiftUI in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D596C7612BBACF40008D0E9A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D596C7602BBACF40008D0E9A /* CodeMirror-SwiftUI in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D596C7292BBACC1E008D0E9A /* QuickCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +68,9 @@
 		D596C74A2BBACCA1008D0E9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D596C74D2BBACCA1008D0E9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D596C74F2BBACCA1008D0E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D596C7552BBACE3B008D0E9A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		D596C7622BBAD0C5008D0E9A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D596C7642BBAD422008D0E9A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D596C75F2BBACF40008D0E9A /* CodeMirror-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D596C75D2BBACF2C008D0E9A /* SwiftUIPrint in Frameworks */,
+				D596C7592BBACF28008D0E9A /* CodeMirror-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +100,7 @@
 				D596C72B2BBACC1E008D0E9A /* QuickCode */,
 				D596C7432BBACC9F008D0E9A /* QuickCode iOS */,
 				D596C72A2BBACC1E008D0E9A /* Products */,
+				D596C7572BBACF28008D0E9A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +123,7 @@
 				D596C7372BBACC20008D0E9A /* Info.plist */,
 				D596C7382BBACC20008D0E9A /* QuickCode.entitlements */,
 				D596C7342BBACC20008D0E9A /* Preview Content */,
+				D596C7622BBAD0C5008D0E9A /* SettingsView.swift */,
 			);
 			path = QuickCode;
 			sourceTree = "<group>";
@@ -104,6 +145,8 @@
 				D596C74A2BBACCA1008D0E9A /* Assets.xcassets */,
 				D596C74F2BBACCA1008D0E9A /* Info.plist */,
 				D596C74C2BBACCA1008D0E9A /* Preview Content */,
+				D596C7552BBACE3B008D0E9A /* Settings.bundle */,
+				D596C7642BBAD422008D0E9A /* SettingsView.swift */,
 			);
 			path = "QuickCode iOS";
 			sourceTree = "<group>";
@@ -116,6 +159,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D596C7572BBACF28008D0E9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,12 +176,16 @@
 				D596C7252BBACC1E008D0E9A /* Sources */,
 				D596C7262BBACC1E008D0E9A /* Frameworks */,
 				D596C7272BBACC1E008D0E9A /* Resources */,
+				D596C7612BBACF40008D0E9A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = QuickCode;
+			packageProductDependencies = (
+				D596C75E2BBACF40008D0E9A /* CodeMirror-SwiftUI */,
+			);
 			productName = QuickCode;
 			productReference = D596C7292BBACC1E008D0E9A /* QuickCode.app */;
 			productType = "com.apple.product-type.application";
@@ -143,12 +197,17 @@
 				D596C73E2BBACC9F008D0E9A /* Sources */,
 				D596C73F2BBACC9F008D0E9A /* Frameworks */,
 				D596C7402BBACC9F008D0E9A /* Resources */,
+				D596C75B2BBACF28008D0E9A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "QuickCode iOS";
+			packageProductDependencies = (
+				D596C7582BBACF28008D0E9A /* CodeMirror-SwiftUI */,
+				D596C75C2BBACF2C008D0E9A /* SwiftUIPrint */,
+			);
 			productName = "QuickCode iOS";
 			productReference = D596C7422BBACC9F008D0E9A /* QuickCode iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -180,6 +239,10 @@
 				Base,
 			);
 			mainGroup = D596C7202BBACC1E008D0E9A;
+			packageReferences = (
+				D596C7532BBACD93008D0E9A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */,
+				D596C7542BBACDB5008D0E9A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */,
+			);
 			productRefGroup = D596C72A2BBACC1E008D0E9A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -205,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D596C74E2BBACCA1008D0E9A /* Preview Assets.xcassets in Resources */,
+				D596C7562BBACE3B008D0E9A /* Settings.bundle in Resources */,
 				D596C74B2BBACCA1008D0E9A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D596C72D2BBACC1E008D0E9A /* QuickCodeApp.swift in Sources */,
+				D596C7632BBAD0C5008D0E9A /* SettingsView.swift in Sources */,
 				D596C72F2BBACC1E008D0E9A /* QuickCodeDocument.swift in Sources */,
 				D596C7312BBACC1E008D0E9A /* ContentView.swift in Sources */,
 			);
@@ -227,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D596C7452BBACC9F008D0E9A /* QuickCode_iOSApp.swift in Sources */,
+				D596C7652BBAD422008D0E9A /* SettingsView.swift in Sources */,
 				D596C7472BBACC9F008D0E9A /* QuickCode_iOSDocument.swift in Sources */,
 				D596C7492BBACC9F008D0E9A /* ContentView.swift in Sources */,
 			);
@@ -287,6 +353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -344,6 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -423,13 +491,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "QuickCode iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = QuickCode;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -438,6 +508,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MSJ.QuickCode-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -456,13 +529,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "QuickCode iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = QuickCode;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -471,6 +546,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MSJ.QuickCode-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -509,6 +587,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D596C7532BBACD93008D0E9A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Pictarine/CodeMirror-SwiftUI";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		D596C7542BBACDB5008D0E9A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wolfmcnally/SwiftUIPrint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D596C7582BBACF28008D0E9A /* CodeMirror-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D596C7532BBACD93008D0E9A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
+			productName = "CodeMirror-SwiftUI";
+		};
+		D596C75C2BBACF2C008D0E9A /* SwiftUIPrint */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D596C7542BBACDB5008D0E9A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */;
+			productName = SwiftUIPrint;
+		};
+		D596C75E2BBACF40008D0E9A /* CodeMirror-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D596C7532BBACD93008D0E9A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
+			productName = "CodeMirror-SwiftUI";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D596C7212BBACC1E008D0E9A /* Project object */;
 }
