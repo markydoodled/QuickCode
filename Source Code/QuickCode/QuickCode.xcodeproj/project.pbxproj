@@ -21,8 +21,6 @@
 		D596C7592BBACF28008D0E9A /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D596C7582BBACF28008D0E9A /* CodeMirror-SwiftUI */; };
 		D596C75A2BBACF28008D0E9A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D596C7582BBACF28008D0E9A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D596C75D2BBACF2C008D0E9A /* SwiftUIPrint in Frameworks */ = {isa = PBXBuildFile; productRef = D596C75C2BBACF2C008D0E9A /* SwiftUIPrint */; };
-		D596C75F2BBACF40008D0E9A /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D596C75E2BBACF40008D0E9A /* CodeMirror-SwiftUI */; };
-		D596C7602BBACF40008D0E9A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D596C75E2BBACF40008D0E9A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D596C7632BBAD0C5008D0E9A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7622BBAD0C5008D0E9A /* SettingsView.swift */; };
 		D596C7652BBAD422008D0E9A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7642BBAD422008D0E9A /* SettingsView.swift */; };
 /* End PBXBuildFile section */
@@ -45,7 +43,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D596C7602BBACF40008D0E9A /* CodeMirror-SwiftUI in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,7 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D596C75F2BBACF40008D0E9A /* CodeMirror-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +180,6 @@
 			);
 			name = QuickCode;
 			packageProductDependencies = (
-				D596C75E2BBACF40008D0E9A /* CodeMirror-SwiftUI */,
 			);
 			productName = QuickCode;
 			productReference = D596C7292BBACC1E008D0E9A /* QuickCode.app */;
@@ -617,11 +612,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D596C7542BBACDB5008D0E9A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */;
 			productName = SwiftUIPrint;
-		};
-		D596C75E2BBACF40008D0E9A /* CodeMirror-SwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D596C7532BBACD93008D0E9A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
-			productName = "CodeMirror-SwiftUI";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

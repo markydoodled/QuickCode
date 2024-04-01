@@ -43,6 +43,8 @@ struct ContentView: View {
     @State var activeSheet: ActiveSheet?
     //Setup Appearance Tracker
     @AppStorage("selectedAppearance") var selectedAppearance = 3
+    //Store Inspector State
+    @AppStorage("showingInspector") var showingInspector = false
     
     //Setup File Exporter Sheet Trackers
     @State var isShowingSwiftSourceExport = false
@@ -90,6 +92,23 @@ struct ContentView: View {
                     UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .unspecified
                 }
             }
+            .inspector(isPresented: $showingInspector) {
+                //Form Showing File Metadata
+                Form {
+                    Section {
+                        Label("Title - \(fileNameAttribute)", systemImage: "textformat")
+                        Label("Extension - \(fileExtensionAttribute)", systemImage: "square.grid.3x1.folder.badge.plus")
+                        Label("Size - \(fileByteCountFormatter.string(fromByteCount: fileSizeAttribute))", systemImage: "externaldrive")
+                        Label("Path - \(filePathAttribute)", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
+                        Label("Owner - \(fileOwnerAttribute)", systemImage: "person")
+                        Label("Created - \(fileCreatedAttribute.formatted(.dateTime))", systemImage: "calendar.badge.plus")
+                        Label("Modified - \(fileModifiedAttribute.formatted(.dateTime))", systemImage: "calendar.badge.clock")
+                        Label("File Type - \(fileTypeAttribute)", systemImage: "doc")
+                    } footer: {
+                        Text("Metadata Generated From Last Time The File Was Opened")
+                    }
+                }
+            }
         //Change The App Appearance If The Picker Changes
             .onChange(of: selectedAppearance) {
                 if selectedAppearance == 1 {
@@ -110,7 +129,7 @@ struct ContentView: View {
                 .keyboardShortcut(",")
             }
             ToolbarItem(id: "metadata", placement: .primaryAction) {
-                Button(action: {activeSheet = .metadata}) {
+                Button(action: {showingInspector.toggle()}) {
                     Label("Metadata", systemImage: "info.circle")
                 }
                 .help("Metadata")
