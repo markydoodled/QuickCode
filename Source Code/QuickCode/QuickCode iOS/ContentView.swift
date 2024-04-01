@@ -91,7 +91,7 @@ struct ContentView: View {
                 }
             }
         //Change The App Appearance If The Picker Changes
-            .onChange(of: selectedAppearance) { app in
+            .onChange(of: selectedAppearance) {
                 if selectedAppearance == 1 {
                     UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .light
                 } else if selectedAppearance == 2 {

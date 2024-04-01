@@ -512,326 +512,326 @@ struct ThemesSettings: View {
             }
             .pickerStyle(.menu)
             //Detect Changes In The Theme Picker
-            .onChange(of: selectedTheme) { themeValue in
-                if themeValue == 1 {
+            .onChange(of: selectedTheme) {
+                if selectedTheme == 1 {
                     self.theme = CodeViewTheme.bbedit
                 }
-                if themeValue == 2 {
+                if selectedTheme == 2 {
                     self.theme = CodeViewTheme.allHallowEve
                 }
-                if themeValue == 3 {
+                if selectedTheme == 3 {
                     self.theme = CodeViewTheme.idleFingers
                 }
-                if themeValue == 4 {
+                if selectedTheme == 4 {
                     self.theme = CodeViewTheme.spaceCadet
                 }
-                if themeValue == 5 {
+                if selectedTheme == 5 {
                     self.theme = CodeViewTheme.idle
                 }
-                if themeValue == 6 {
+                if selectedTheme == 6 {
                     self.theme = CodeViewTheme.oceanic
                 }
-                if themeValue == 7 {
+                if selectedTheme == 7 {
                     self.theme = CodeViewTheme.clouds
                 }
-                if themeValue == 8 {
+                if selectedTheme == 8 {
                     self.theme = CodeViewTheme.github
                 }
-                if themeValue == 9 {
+                if selectedTheme == 9 {
                     self.theme = CodeViewTheme.ryanLight
                 }
-                if themeValue == 10 {
+                if selectedTheme == 10 {
                     self.theme = CodeViewTheme.blackPearl
                 }
-                if themeValue == 11 {
+                if selectedTheme == 11 {
                     self.theme = CodeViewTheme.monoIndustrial
                 }
-                if themeValue == 12 {
+                if selectedTheme == 12 {
                     self.theme = CodeViewTheme.happyHappyJoyJoy2
                 }
-                if themeValue == 13 {
+                if selectedTheme == 13 {
                     self.theme = CodeViewTheme.cube2Media
                 }
-                if themeValue == 14 {
+                if selectedTheme == 14 {
                     self.theme = CodeViewTheme.friendshipBracelet
                 }
-                if themeValue == 15 {
+                if selectedTheme == 15 {
                     self.theme = CodeViewTheme.classicModified
                 }
-                if themeValue == 16 {
+                if selectedTheme == 16 {
                     self.theme = CodeViewTheme.amy
                 }
-                if themeValue == 17 {
+                if selectedTheme == 17 {
                     self.theme = CodeViewTheme.default
                 }
-                if themeValue == 18 {
+                if selectedTheme == 18 {
                     self.theme = CodeViewTheme.rdrak
                 }
-                if themeValue == 19 {
+                if selectedTheme == 19 {
                     self.theme = CodeViewTheme.espresso
                 }
-                if themeValue == 20 {
+                if selectedTheme == 20 {
                     self.theme = CodeViewTheme.sunburst
                 }
-                if themeValue == 21 {
+                if selectedTheme == 21 {
                     self.theme = CodeViewTheme.madeOfCode
                 }
-                if themeValue == 22 {
+                if selectedTheme == 22 {
                     self.theme = CodeViewTheme.arona
                 }
-                if themeValue == 23 {
+                if selectedTheme == 23 {
                     self.theme = CodeViewTheme.putty
                 }
-                if themeValue == 24 {
+                if selectedTheme == 24 {
                     self.theme = CodeViewTheme.nightlion
                 }
-                if themeValue == 25 {
+                if selectedTheme == 25 {
                     self.theme = CodeViewTheme.sidewalkchalk
                 }
-                if themeValue == 26 {
+                if selectedTheme == 26 {
                     self.theme = CodeViewTheme.swyphsii
                 }
-                if themeValue == 27 {
+                if selectedTheme == 27 {
                     self.theme = CodeViewTheme.iplastic
                 }
-                if themeValue == 28 {
+                if selectedTheme == 28 {
                     self.theme = CodeViewTheme.solarizedLight
                 }
-                if themeValue == 29 {
+                if selectedTheme == 29 {
                     self.theme = CodeViewTheme.macClassic
                 }
-                if themeValue == 30 {
+                if selectedTheme == 30 {
                     self.theme = CodeViewTheme.pastelsOnDark
                 }
-                if themeValue == 31 {
+                if selectedTheme == 31 {
                     self.theme = CodeViewTheme.irBlack
                 }
-                if themeValue == 32 {
+                if selectedTheme == 32 {
                     self.theme = CodeViewTheme.material
                 }
-                if themeValue == 33 {
+                if selectedTheme == 33 {
                     self.theme = CodeViewTheme.monokaiFannonedition
                 }
-                if themeValue == 34 {
+                if selectedTheme == 34 {
                     self.theme = CodeViewTheme.monokaiBright
                 }
-                if themeValue == 35 {
+                if selectedTheme == 35 {
                     self.theme = CodeViewTheme.eiffel
                 }
-                if themeValue == 36 {
+                if selectedTheme == 36 {
                     self.theme = CodeViewTheme.base16Light
                 }
-                if themeValue == 37 {
+                if selectedTheme == 37 {
                     self.theme = CodeViewTheme.oceanicMuted
                 }
-                if themeValue == 38 {
+                if selectedTheme == 38 {
                     self.theme = CodeViewTheme.summerfruit
                 }
-                if themeValue == 39 {
+                if selectedTheme == 39 {
                     self.theme = CodeViewTheme.espressoLibre
                 }
-                if themeValue == 40 {
+                if selectedTheme == 40 {
                     self.theme = CodeViewTheme.krtheme
                 }
-                if themeValue == 41 {
+                if selectedTheme == 41 {
                     self.theme = CodeViewTheme.mreq
                 }
-                if themeValue == 42 {
+                if selectedTheme == 42 {
                     self.theme = CodeViewTheme.chanfle
                 }
-                if themeValue == 43 {
+                if selectedTheme == 43 {
                     self.theme = CodeViewTheme.venom
                 }
-                if themeValue == 44 {
+                if selectedTheme == 44 {
                     self.theme = CodeViewTheme.juicy
                 }
-                if themeValue == 45 {
+                if selectedTheme == 45 {
                     self.theme = CodeViewTheme.coda
                 }
-                if themeValue == 46 {
+                if selectedTheme == 46 {
                     self.theme = CodeViewTheme.fluidvision
                 }
-                if themeValue == 47 {
+                if selectedTheme == 47 {
                     self.theme = CodeViewTheme.tomorrowNightBlue
                 }
-                if themeValue == 48 {
+                if selectedTheme == 48 {
                     self.theme = CodeViewTheme.magicwbAmiga
                 }
-                if themeValue == 49 {
+                if selectedTheme == 49 {
                     self.theme = CodeViewTheme.twilight
                 }
-                if themeValue == 50 {
+                if selectedTheme == 50 {
                     self.theme = CodeViewTheme.vibrantInk
                 }
-                if themeValue == 51 {
+                if selectedTheme == 51 {
                     self.theme = CodeViewTheme.summerSun
                 }
-                if themeValue == 52 {
+                if selectedTheme == 52 {
                     self.theme = CodeViewTheme.monokai
                 }
-                if themeValue == 53 {
+                if selectedTheme == 53 {
                     self.theme = CodeViewTheme.railsEnvy
                 }
-                if themeValue == 54 {
+                if selectedTheme == 54 {
                     self.theme = CodeViewTheme.merbivore
                 }
-                if themeValue == 55 {
+                if selectedTheme == 55 {
                     self.theme = CodeViewTheme.dracula
                 }
-                if themeValue == 56 {
+                if selectedTheme == 56 {
                     self.theme = CodeViewTheme.pastie
                 }
-                if themeValue == 57 {
+                if selectedTheme == 57 {
                     self.theme = CodeViewTheme.lowlight
                 }
-                if themeValue == 58 {
+                if selectedTheme == 58 {
                     self.theme = CodeViewTheme.spectacular
                 }
-                if themeValue == 59 {
+                if selectedTheme == 59 {
                     self.theme = CodeViewTheme.smoothy
                 }
-                if themeValue == 60 {
+                if selectedTheme == 60 {
                     self.theme = CodeViewTheme.vibrantFin
                 }
-                if themeValue == 61 {
+                if selectedTheme == 61 {
                     self.theme = CodeViewTheme.blackboard
                 }
-                if themeValue == 62 {
+                if selectedTheme == 62 {
                     self.theme = CodeViewTheme.slushPoppies
                 }
-                if themeValue == 63 {
+                if selectedTheme == 63 {
                     self.theme = CodeViewTheme.freckle
                 }
-                if themeValue == 64 {
+                if selectedTheme == 64 {
                     self.theme = CodeViewTheme.fantasyscript
                 }
-                if themeValue == 65 {
+                if selectedTheme == 65 {
                     self.theme = CodeViewTheme.tomorrowNightEighties
                 }
-                if themeValue == 66 {
+                if selectedTheme == 66 {
                     self.theme = CodeViewTheme.rhuk
                 }
-                if themeValue == 67 {
+                if selectedTheme == 67 {
                     self.theme = CodeViewTheme.toyChest
                 }
-                if themeValue == 68 {
+                if selectedTheme == 68 {
                     self.theme = CodeViewTheme.fake
                 }
-                if themeValue == 69 {
+                if selectedTheme == 69 {
                     self.theme = CodeViewTheme.emacsStrict
                 }
-                if themeValue == 70 {
+                if selectedTheme == 70 {
                     self.theme = CodeViewTheme.merbivoreSoft
                 }
-                if themeValue == 71 {
+                if selectedTheme == 71 {
                     self.theme = CodeViewTheme.fadeToGrey
                 }
-                if themeValue == 72 {
+                if selectedTheme == 72 {
                     self.theme = CodeViewTheme.monokaiSublime
                 }
-                if themeValue == 73 {
+                if selectedTheme == 73 {
                     self.theme = CodeViewTheme.johnny
                 }
-                if themeValue == 74 {
+                if selectedTheme == 74 {
                     self.theme = CodeViewTheme.railscasts
                 }
-                if themeValue == 75 {
+                if selectedTheme == 75 {
                     self.theme = CodeViewTheme.argonaut
                 }
-                if themeValue == 76 {
+                if selectedTheme == 76 {
                     self.theme = CodeViewTheme.tomorrowNightBright
                 }
-                if themeValue == 77 {
+                if selectedTheme == 77 {
                     self.theme = CodeViewTheme.lazy
                 }
-                if themeValue == 78 {
+                if selectedTheme == 78 {
                     self.theme = CodeViewTheme.tomorrowNight
                 }
-                if themeValue == 79 {
+                if selectedTheme == 79 {
                     self.theme = CodeViewTheme.bongzilla
                 }
-                if themeValue == 80 {
+                if selectedTheme == 80 {
                     self.theme = CodeViewTheme.zenburnesque
                 }
-                if themeValue == 81 {
+                if selectedTheme == 81 {
                     self.theme = CodeViewTheme.notebook
                 }
-                if themeValue == 82 {
+                if selectedTheme == 82 {
                     self.theme = CodeViewTheme.djangoSmoothy
                 }
-                if themeValue == 83 {
+                if selectedTheme == 83 {
                     self.theme = CodeViewTheme.blackboardBlack
                 }
-                if themeValue == 84 {
+                if selectedTheme == 84 {
                     self.theme = CodeViewTheme.blackPearlii
                 }
-                if themeValue == 85 {
+                if selectedTheme == 85 {
                     self.theme = CodeViewTheme.kuroir
                 }
-                if themeValue == 86 {
+                if selectedTheme == 86 {
                     self.theme = CodeViewTheme.cobalt
                 }
-                if themeValue == 87 {
+                if selectedTheme == 87 {
                     self.theme = CodeViewTheme.ayuMirage
                 }
-                if themeValue == 88 {
+                if selectedTheme == 88 {
                     self.theme = CodeViewTheme.chromeDevtools
                 }
-                if themeValue == 89 {
+                if selectedTheme == 89 {
                     self.theme = CodeViewTheme.prospettiva
                 }
-                if themeValue == 90 {
+                if selectedTheme == 90 {
                     self.theme = CodeViewTheme.espressoSoda
                 }
-                if themeValue == 91 {
+                if selectedTheme == 91 {
                     self.theme = CodeViewTheme.birdsOfParadise
                 }
-                if themeValue == 92 {
+                if selectedTheme == 92 {
                     self.theme = CodeViewTheme.textExMachina
                 }
-                if themeValue == 93 {
+                if selectedTheme == 93 {
                     self.theme = CodeViewTheme.django
                 }
-                if themeValue == 94 {
+                if selectedTheme == 94 {
                     self.theme = CodeViewTheme.tomorrow
                 }
-                if themeValue == 95 {
+                if selectedTheme == 95 {
                     self.theme = CodeViewTheme.solarizedDark
                 }
-                if themeValue == 96 {
+                if selectedTheme == 96 {
                     self.theme = CodeViewTheme.plasticcodewrap
                 }
-                if themeValue == 97 {
+                if selectedTheme == 97 {
                     self.theme = CodeViewTheme.materialPalenight
                 }
-                if themeValue == 98 {
+                if selectedTheme == 98 {
                     self.theme = CodeViewTheme.bespin
                 }
-                if themeValue == 99 {
+                if selectedTheme == 99 {
                     self.theme = CodeViewTheme.espressoTutti
                 }
-                if themeValue == 100 {
+                if selectedTheme == 100 {
                     self.theme = CodeViewTheme.vibrantTango
                 }
-                if themeValue == 101 {
+                if selectedTheme == 101 {
                     self.theme = CodeViewTheme.tubster
                 }
-                if themeValue == 102 {
+                if selectedTheme == 102 {
                     self.theme = CodeViewTheme.darkpastel
                 }
-                if themeValue == 103 {
+                if selectedTheme == 103 {
                     self.theme = CodeViewTheme.dawn
                 }
-                if themeValue == 104 {
+                if selectedTheme == 104 {
                     self.theme = CodeViewTheme.tango
                 }
-                if themeValue == 105 {
+                if selectedTheme == 105 {
                     self.theme = CodeViewTheme.cloudsMidnight
                 }
-                if themeValue == 106 {
+                if selectedTheme == 106 {
                     self.theme = CodeViewTheme.glitterbomb
                 }
-                if themeValue == 107 {
+                if selectedTheme == 107 {
                     self.theme = CodeViewTheme.irWhite
                 }
             }
@@ -1092,185 +1092,185 @@ struct ThemesSettings: View {
             }
             .pickerStyle(.menu)
             //Detect Changes In The Syntax Picker
-            .onChange(of: selectedSyntax) { syntax in
-                if syntax == 1 {
+            .onChange(of: selectedSyntax) {
+                if selectedSyntax == 1 {
                     self.syntax = CodeMode.apl
                 }
-                if syntax == 2 {
+                if selectedSyntax == 2 {
                     self.syntax = CodeMode.pgp
                 }
-                if syntax == 3 {
+                if selectedSyntax == 3 {
                     self.syntax = CodeMode.asn
                 }
-                if syntax == 4 {
+                if selectedSyntax == 4 {
                     self.syntax = CodeMode.cmake
                 }
-                if syntax == 5 {
+                if selectedSyntax == 5 {
                     self.syntax = CodeMode.c
                 }
-                if syntax == 6 {
+                if selectedSyntax == 6 {
                     self.syntax = CodeMode.cplus
                 }
-                if syntax == 7 {
+                if selectedSyntax == 7 {
                     self.syntax = CodeMode.objc
                 }
-                if syntax == 8 {
+                if selectedSyntax == 8 {
                     self.syntax = CodeMode.kotlin
                 }
-                if syntax == 9 {
+                if selectedSyntax == 9 {
                     self.syntax = CodeMode.scala
                 }
-                if syntax == 10 {
+                if selectedSyntax == 10 {
                     self.syntax = CodeMode.csharp
                 }
-                if syntax == 11 {
+                if selectedSyntax == 11 {
                     self.syntax = CodeMode.java
                 }
-                if syntax == 12 {
+                if selectedSyntax == 12 {
                     self.syntax = CodeMode.cobol
                 }
-                if syntax == 13 {
+                if selectedSyntax == 13 {
                     self.syntax = CodeMode.coffeescript
                 }
-                if syntax == 14 {
+                if selectedSyntax == 14 {
                     self.syntax = CodeMode.lisp
                 }
-                if syntax == 15 {
+                if selectedSyntax == 15 {
                     self.syntax = CodeMode.css
                 }
-                if syntax == 16 {
+                if selectedSyntax == 16 {
                     self.syntax = CodeMode.django
                 }
-                if syntax == 17 {
+                if selectedSyntax == 17 {
                     self.syntax = CodeMode.dockerfile
                 }
-                if syntax == 18 {
+                if selectedSyntax == 18 {
                     self.syntax = CodeMode.erlang
                 }
-                if syntax == 19 {
+                if selectedSyntax == 19 {
                     self.syntax = CodeMode.fortran
                 }
-                if syntax == 20 {
+                if selectedSyntax == 20 {
                     self.syntax = CodeMode.go
                 }
-                if syntax == 21 {
+                if selectedSyntax == 21 {
                     self.syntax = CodeMode.groovy
                 }
-                if syntax == 22 {
+                if selectedSyntax == 22 {
                     self.syntax = CodeMode.haskell
                 }
-                if syntax == 23 {
+                if selectedSyntax == 23 {
                     self.syntax = CodeMode.html
                 }
-                if syntax == 24 {
+                if selectedSyntax == 24 {
                     self.syntax = CodeMode.http
                 }
-                if syntax == 25 {
+                if selectedSyntax == 25 {
                     self.syntax = CodeMode.javascript
                 }
-                if syntax == 26 {
+                if selectedSyntax == 26 {
                     self.syntax = CodeMode.typescript
                 }
-                if syntax == 27 {
+                if selectedSyntax == 27 {
                     self.syntax = CodeMode.json
                 }
-                if syntax == 28 {
+                if selectedSyntax == 28 {
                     self.syntax = CodeMode.ecma
                 }
-                if syntax == 29 {
+                if selectedSyntax == 29 {
                     self.syntax = CodeMode.jinja
                 }
-                if syntax == 30 {
+                if selectedSyntax == 30 {
                     self.syntax = CodeMode.lua
                 }
-                if syntax == 31 {
+                if selectedSyntax == 31 {
                     self.syntax = CodeMode.markdown
                 }
-                if syntax == 32 {
+                if selectedSyntax == 32 {
                     self.syntax = CodeMode.maths
                 }
-                if syntax == 33 {
+                if selectedSyntax == 33 {
                     self.syntax = CodeMode.pascal
                 }
-                if syntax == 34 {
+                if selectedSyntax == 34 {
                     self.syntax = CodeMode.perl
                 }
-                if syntax == 35 {
+                if selectedSyntax == 35 {
                     self.syntax = CodeMode.php
                 }
-                if syntax == 36 {
+                if selectedSyntax == 36 {
                     self.syntax = CodeMode.powershell
                 }
-                if syntax == 37 {
+                if selectedSyntax == 37 {
                     self.syntax = CodeMode.properties
                 }
-                if syntax == 38 {
+                if selectedSyntax == 38 {
                     self.syntax = CodeMode.protobuf
                 }
-                if syntax == 39 {
+                if selectedSyntax == 39 {
                     self.syntax = CodeMode.python
                 }
-                if syntax == 40 {
+                if selectedSyntax == 40 {
                     self.syntax = CodeMode.r
                 }
-                if syntax == 41 {
+                if selectedSyntax == 41 {
                     self.syntax = CodeMode.ruby
                 }
-                if syntax == 42 {
+                if selectedSyntax == 42 {
                     self.syntax = CodeMode.rust
                 }
-                if syntax == 43 {
+                if selectedSyntax == 43 {
                     self.syntax = CodeMode.sass
                 }
-                if syntax == 44 {
+                if selectedSyntax == 44 {
                     self.syntax = CodeMode.scheme
                 }
-                if syntax == 45 {
+                if selectedSyntax == 45 {
                     self.syntax = CodeMode.shell
                 }
-                if syntax == 46 {
+                if selectedSyntax == 46 {
                     self.syntax = CodeMode.sql
                 }
-                if syntax == 47 {
+                if selectedSyntax == 47 {
                     self.syntax = CodeMode.sqllite
                 }
-                if syntax == 48 {
+                if selectedSyntax == 48 {
                     self.syntax = CodeMode.mysql
                 }
-                if syntax == 49 {
+                if selectedSyntax == 49 {
                     self.syntax = CodeMode.latex
                 }
-                if syntax == 50 {
+                if selectedSyntax == 50 {
                     self.syntax = CodeMode.swift
                 }
-                if syntax == 51 {
+                if selectedSyntax == 51 {
                     self.syntax = CodeMode.text
                 }
-                if syntax == 52 {
+                if selectedSyntax == 52 {
                     self.syntax = CodeMode.toml
                 }
-                if syntax == 53 {
+                if selectedSyntax == 53 {
                     self.syntax = CodeMode.vb
                 }
-                if syntax == 54 {
+                if selectedSyntax == 54 {
                     self.syntax = CodeMode.vue
                 }
-                if syntax == 55 {
+                if selectedSyntax == 55 {
                     self.syntax = CodeMode.xml
                 }
-                if syntax == 56 {
+                if selectedSyntax == 56 {
                     self.syntax = CodeMode.yaml
                 }
-                if syntax == 57 {
+                if selectedSyntax == 57 {
                     self.syntax = CodeMode.dart
                 }
-                if syntax == 58 {
+                if selectedSyntax == 58 {
                     self.syntax = CodeMode.ntriples
                 }
-                if syntax == 59 {
+                if selectedSyntax == 59 {
                     self.syntax = CodeMode.sparql
                 }
-                if syntax == 60 {
+                if selectedSyntax == 60 {
                     self.syntax = CodeMode.turtle
                 }
             }
