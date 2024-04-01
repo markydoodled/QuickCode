@@ -12,6 +12,11 @@
 		D596C7312BBACC1E008D0E9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7302BBACC1E008D0E9A /* ContentView.swift */; };
 		D596C7332BBACC20008D0E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C7322BBACC20008D0E9A /* Assets.xcassets */; };
 		D596C7362BBACC20008D0E9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C7352BBACC20008D0E9A /* Preview Assets.xcassets */; };
+		D596C7452BBACC9F008D0E9A /* QuickCode_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7442BBACC9F008D0E9A /* QuickCode_iOSApp.swift */; };
+		D596C7472BBACC9F008D0E9A /* QuickCode_iOSDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7462BBACC9F008D0E9A /* QuickCode_iOSDocument.swift */; };
+		D596C7492BBACC9F008D0E9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7482BBACC9F008D0E9A /* ContentView.swift */; };
+		D596C74B2BBACCA1008D0E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C74A2BBACCA1008D0E9A /* Assets.xcassets */; };
+		D596C74E2BBACCA1008D0E9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C74D2BBACCA1008D0E9A /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,10 +28,24 @@
 		D596C7352BBACC20008D0E9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D596C7372BBACC20008D0E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D596C7382BBACC20008D0E9A /* QuickCode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickCode.entitlements; sourceTree = "<group>"; };
+		D596C7422BBACC9F008D0E9A /* QuickCode iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QuickCode iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D596C7442BBACC9F008D0E9A /* QuickCode_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCode_iOSApp.swift; sourceTree = "<group>"; };
+		D596C7462BBACC9F008D0E9A /* QuickCode_iOSDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCode_iOSDocument.swift; sourceTree = "<group>"; };
+		D596C7482BBACC9F008D0E9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D596C74A2BBACCA1008D0E9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D596C74D2BBACCA1008D0E9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D596C74F2BBACCA1008D0E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D596C7262BBACC1E008D0E9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D596C73F2BBACC9F008D0E9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				D596C72B2BBACC1E008D0E9A /* QuickCode */,
+				D596C7432BBACC9F008D0E9A /* QuickCode iOS */,
 				D596C72A2BBACC1E008D0E9A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				D596C7292BBACC1E008D0E9A /* QuickCode.app */,
+				D596C7422BBACC9F008D0E9A /* QuickCode iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +95,27 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D596C7432BBACC9F008D0E9A /* QuickCode iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D596C7442BBACC9F008D0E9A /* QuickCode_iOSApp.swift */,
+				D596C7462BBACC9F008D0E9A /* QuickCode_iOSDocument.swift */,
+				D596C7482BBACC9F008D0E9A /* ContentView.swift */,
+				D596C74A2BBACCA1008D0E9A /* Assets.xcassets */,
+				D596C74F2BBACCA1008D0E9A /* Info.plist */,
+				D596C74C2BBACCA1008D0E9A /* Preview Content */,
+			);
+			path = "QuickCode iOS";
+			sourceTree = "<group>";
+		};
+		D596C74C2BBACCA1008D0E9A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D596C74D2BBACCA1008D0E9A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -94,6 +136,23 @@
 			productReference = D596C7292BBACC1E008D0E9A /* QuickCode.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D596C7412BBACC9F008D0E9A /* QuickCode iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D596C7502BBACCA1008D0E9A /* Build configuration list for PBXNativeTarget "QuickCode iOS" */;
+			buildPhases = (
+				D596C73E2BBACC9F008D0E9A /* Sources */,
+				D596C73F2BBACC9F008D0E9A /* Frameworks */,
+				D596C7402BBACC9F008D0E9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "QuickCode iOS";
+			productName = "QuickCode iOS";
+			productReference = D596C7422BBACC9F008D0E9A /* QuickCode iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -105,6 +164,9 @@
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					D596C7282BBACC1E008D0E9A = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					D596C7412BBACC9F008D0E9A = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
@@ -123,6 +185,7 @@
 			projectRoot = "";
 			targets = (
 				D596C7282BBACC1E008D0E9A /* QuickCode */,
+				D596C7412BBACC9F008D0E9A /* QuickCode iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -137,6 +200,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D596C7402BBACC9F008D0E9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D596C74E2BBACCA1008D0E9A /* Preview Assets.xcassets in Resources */,
+				D596C74B2BBACCA1008D0E9A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -147,6 +219,16 @@
 				D596C72D2BBACC1E008D0E9A /* QuickCodeApp.swift in Sources */,
 				D596C72F2BBACC1E008D0E9A /* QuickCodeDocument.swift in Sources */,
 				D596C7312BBACC1E008D0E9A /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D596C73E2BBACC9F008D0E9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D596C7452BBACC9F008D0E9A /* QuickCode_iOSApp.swift in Sources */,
+				D596C7472BBACC9F008D0E9A /* QuickCode_iOSDocument.swift in Sources */,
+				D596C7492BBACC9F008D0E9A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +288,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -263,7 +345,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -286,6 +368,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuickCode/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -314,6 +397,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuickCode/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -324,6 +408,73 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D596C7512BBACCA1008D0E9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"QuickCode iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = ZWASU9HFBU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "QuickCode iOS/Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MSJ.QuickCode-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D596C7522BBACCA1008D0E9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"QuickCode iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = ZWASU9HFBU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "QuickCode iOS/Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MSJ.QuickCode-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -344,6 +495,15 @@
 			buildConfigurations = (
 				D596C73C2BBACC20008D0E9A /* Debug */,
 				D596C73D2BBACC20008D0E9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D596C7502BBACCA1008D0E9A /* Build configuration list for PBXNativeTarget "QuickCode iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D596C7512BBACCA1008D0E9A /* Debug */,
+				D596C7522BBACCA1008D0E9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
