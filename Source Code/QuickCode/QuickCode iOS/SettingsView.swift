@@ -38,7 +38,7 @@ struct SettingsView: View {
             //Version Text
             LabeledContent("Version", value: "1.0")
             //Build Text
-            LabeledContent("Build", value: "1")
+            LabeledContent("Build", value: "2")
             //Button To Send Feedback
             Button(action: {isShowingMailView.toggle()}) {
                 Text("Send Feedback...")
