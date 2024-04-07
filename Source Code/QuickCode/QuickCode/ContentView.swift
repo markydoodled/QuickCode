@@ -60,7 +60,7 @@ struct ContentView: View {
         }
         .inspector(isPresented: $showingInspector) {
             //Right Inspector Sidebar Of File Metadata
-            List {
+            Form {
                 Section {
                     Text("\(NSDocumentController().currentDocument?.displayName ?? "None")")
                 } header: {
@@ -113,79 +113,101 @@ struct ContentView: View {
         }
         //Customisable Toolbar Of Quick Actions
             .toolbar(id: "quick-actions") {
-                ToolbarItem(id: "update-metadata", placement: .status) {
-                    Button(action: {
-                        fileURL = NSDocumentController().currentDocument?.fileURL ?? URL(string: "/")!
-                        getAttributes()
-                    }) {
-                        Label("Update Metadata", systemImage: "arrow.counterclockwise")
-                    }
-                    .help("Update Metadata")
-                    .keyboardShortcut("r")
-                }
-                ToolbarItem(id: "change-appearance", placement: .status) {
-                    Menu {
-                        Button(action: {selectedAppearance = 1}) {
-                            Text("Light")
+                Group {
+                    ToolbarItem(id: "undo", placement: .navigation) {
+                        Button(action: {}) {
+                            Label("Undo", systemImage: "arrow.uturn.backward")
                         }
-                        Button(action: {selectedAppearance = 2}) {
-                            Text("Dark")
+                        .help("Undo")
+                    }
+                    ToolbarItem(id: "redo", placement: .navigation) {
+                        Button(action: {}) {
+                            Label("Redi", systemImage: "arrow.uturn.forward")
                         }
-                        Button(action: {selectedAppearance = 3}) {
-                            Text("System")
+                        .help("Redo")
+                    }
+                    ToolbarItem(id: "update-metadata", placement: .primaryAction) {
+                        Button(action: {
+                            fileURL = NSDocumentController().currentDocument?.fileURL ?? URL(string: "/")!
+                            getAttributes()
+                        }) {
+                            Label("Update Metadata", systemImage: "arrow.counterclockwise")
                         }
-                    } label: {
-                        Label("Appearance", systemImage: "cloud.sun")
+                        .help("Update Metadata")
+                        .keyboardShortcut("r")
                     }
-                    .help("Change Appearance")
+                    ToolbarItem(id: "file-inspector", placement: .primaryAction) {
+                        Button(action: {showingInspector.toggle()}) {
+                            Label("File Inspector", systemImage: "sidebar.right")
+                        }
+                        .help("Toggle File Inspector")
+                    }
+                    ToolbarItem(id: "new-doc", placement: .secondaryAction) {
+                        Button(action: {NSDocumentController().newDocument(Any?.self)}) {
+                            Label("New", systemImage: "doc.badge.plus")
+                        }
+                        .help("New Document")
+                    }
+                    ToolbarItem(id: "open-doc", placement: .secondaryAction) {
+                        Button(action: {NSDocumentController().openDocument(Any?.self)}) {
+                            Label("Open", systemImage: "doc.badge.arrow.up")
+                        }
+                        .help("Open Document")
+                    }
+                    ToolbarItem(id: "save-doc", placement: .secondaryAction) {
+                        Button(action: {NSApp.sendAction(#selector(NSDocument.save(_:)), to: nil, from: self)}) {
+                            Label("Save", systemImage: "square.and.arrow.down")
+                        }
+                        .help("Save Document")
+                    }
+                    ToolbarItem(id: "copy-doc", placement: .secondaryAction) {
+                        Button(action: {copyToClipBoard(textToCopy: document.text)}) {
+                            Label("Copy", systemImage: "text.badge.plus")
+                        }
+                        .help("Copy Text")
+                        .keyboardShortcut("c", modifiers: [.command, .shift])
+                    }
+                    ToolbarItem(id: "move-doc", placement: .secondaryAction) {
+                        Button(action: {NSApp.sendAction(#selector(NSDocument.move(_:)), to: nil, from: self)}) {
+                            Label("Move", systemImage: "folder")
+                        }
+                        .help("Move Document")
+                    }
+                    ToolbarItem(id: "duplicate-doc", placement: .secondaryAction) {
+                        Button(action: {NSApp.sendAction(#selector(NSDocument.duplicate(_:)), to: nil, from: self)}) {
+                            Label("Duplicate", systemImage: "doc.on.doc")
+                        }
+                        .help("Duplicate Document")
+                    }
                 }
-                ToolbarItem(id: "new-doc", placement: .secondaryAction) {
-                    Button(action: {NSDocumentController().newDocument(Any?.self)}) {
-                        Label("New", systemImage: "doc.badge.plus")
+                Group {
+                    ToolbarItem(id: "change-appearance", placement: .secondaryAction) {
+                        Menu {
+                            Button(action: {selectedAppearance = 1}) {
+                                Text("Light")
+                            }
+                            Button(action: {selectedAppearance = 2}) {
+                                Text("Dark")
+                            }
+                            Button(action: {selectedAppearance = 3}) {
+                                Text("System")
+                            }
+                        } label: {
+                            Label("Appearance", systemImage: "cloud.sun")
+                        }
+                        .help("Change Appearance")
                     }
-                    .help("New Document")
-                }
-                ToolbarItem(id: "open-doc", placement: .secondaryAction) {
-                    Button(action: {NSDocumentController().openDocument(Any?.self)}) {
-                        Label("Open", systemImage: "doc.badge.arrow.up")
+                    ToolbarItem(id: "export", placement: .secondaryAction) {
+                        Button(action: {}) {
+                            Label("Export", systemImage: "square.and.arrow.up.on.square")
+                        }
+                        .help("Export Document")
                     }
-                    .help("Open Document")
-                }
-                ToolbarItem(id: "save-doc", placement: .secondaryAction) {
-                    Button(action: {NSApp.sendAction(#selector(NSDocument.save(_:)), to: nil, from: self)}) {
-                        Label("Save", systemImage: "square.and.arrow.down")
-                    }
-                    .help("Save Document")
-                }
-                ToolbarItem(id: "copy-doc", placement: .secondaryAction) {
-                    Button(action: {copyToClipBoard(textToCopy: document.text)}) {
-                        Label("Copy", systemImage: "text.badge.plus")
-                    }
-                    .help("Copy Text")
-                    .keyboardShortcut("c", modifiers: [.command, .shift])
-                }
-                ToolbarItem(id: "move-doc", placement: .secondaryAction) {
-                    Button(action: {NSApp.sendAction(#selector(NSDocument.move(_:)), to: nil, from: self)}) {
-                        Label("Move", systemImage: "folder")
-                    }
-                    .help("Move Document")
-                }
-                ToolbarItem(id: "duplicate-doc", placement: .secondaryAction) {
-                    Button(action: {NSApp.sendAction(#selector(NSDocument.duplicate(_:)), to: nil, from: self)}) {
-                        Label("Duplicate", systemImage: "doc.on.doc")
-                    }
-                    .help("Duplicate Document")
-                }
-                ToolbarItem(id: "file-inspector", placement: .confirmationAction) {
-                    Button(action: {showingInspector.toggle()}) {
-                        Label("File Inspector", systemImage: "sidebar.right")
-                    }
-                    .help("Toggle File Inspector")
                 }
             }
             .toolbarRole(.editor)
         //TouchBar Of Quick Actions
-        .touchBar {
+        /*.touchBar {
             Button(action: {
                 fileURL = NSDocumentController().currentDocument?.fileURL ?? URL(string: "/")!
                 getAttributes()
@@ -210,7 +232,7 @@ struct ContentView: View {
             Button(action: {NSApp.sendAction(#selector(NSDocument.duplicate(_:)), to: nil, from: self)}) {
                 Label("Duplicate", systemImage: "doc.on.doc")
             }
-        }
+        }*/
         //Set The Appearance When The App Window Is Loaded
         .onAppear() {
             if selectedAppearance == 1 {

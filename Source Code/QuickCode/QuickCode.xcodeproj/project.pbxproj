@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D57E00762BC181DD0061DFC7 /* DocumentKit in Frameworks */ = {isa = PBXBuildFile; productRef = D57E00752BC181DD0061DFC7 /* DocumentKit */; };
 		D596C72D2BBACC1E008D0E9A /* QuickCodeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C72C2BBACC1E008D0E9A /* QuickCodeApp.swift */; };
 		D596C72F2BBACC1E008D0E9A /* QuickCodeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C72E2BBACC1E008D0E9A /* QuickCodeDocument.swift */; };
 		D596C7312BBACC1E008D0E9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7302BBACC1E008D0E9A /* ContentView.swift */; };
@@ -18,11 +19,13 @@
 		D596C74B2BBACCA1008D0E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C74A2BBACCA1008D0E9A /* Assets.xcassets */; };
 		D596C74E2BBACCA1008D0E9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C74D2BBACCA1008D0E9A /* Preview Assets.xcassets */; };
 		D596C7562BBACE3B008D0E9A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D596C7552BBACE3B008D0E9A /* Settings.bundle */; };
-		D596C7592BBACF28008D0E9A /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D596C7582BBACF28008D0E9A /* CodeMirror-SwiftUI */; };
-		D596C75A2BBACF28008D0E9A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D596C7582BBACF28008D0E9A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		D596C75D2BBACF2C008D0E9A /* SwiftUIPrint in Frameworks */ = {isa = PBXBuildFile; productRef = D596C75C2BBACF2C008D0E9A /* SwiftUIPrint */; };
 		D596C7632BBAD0C5008D0E9A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7622BBAD0C5008D0E9A /* SettingsView.swift */; };
 		D596C7652BBAD422008D0E9A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7642BBAD422008D0E9A /* SettingsView.swift */; };
+		D5E1CD7F2BBAFDEF0012295A /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD7E2BBAFDEF0012295A /* CodeMirror-SwiftUI */; };
+		D5E1CD802BBAFDEF0012295A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD7E2BBAFDEF0012295A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D5E1CD832BBAFE0E0012295A /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */; };
+		D5E1CD842BBAFE0E0012295A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D5E1CD862BBAFE110012295A /* SwiftUIPrint in Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD852BBAFE110012295A /* SwiftUIPrint */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,7 +35,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D596C75A2BBACF28008D0E9A /* CodeMirror-SwiftUI in Embed Frameworks */,
+				D5E1CD842BBAFE0E0012295A /* CodeMirror-SwiftUI in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,6 +46,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D5E1CD802BBAFDEF0012295A /* CodeMirror-SwiftUI in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5E1CD7F2BBAFDEF0012295A /* CodeMirror-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,8 +87,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D596C75D2BBACF2C008D0E9A /* SwiftUIPrint in Frameworks */,
-				D596C7592BBACF28008D0E9A /* CodeMirror-SwiftUI in Frameworks */,
+				D57E00762BC181DD0061DFC7 /* DocumentKit in Frameworks */,
+				D5E1CD862BBAFE110012295A /* SwiftUIPrint in Frameworks */,
+				D5E1CD832BBAFE0E0012295A /* CodeMirror-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +186,7 @@
 			);
 			name = QuickCode;
 			packageProductDependencies = (
+				D5E1CD7E2BBAFDEF0012295A /* CodeMirror-SwiftUI */,
 			);
 			productName = QuickCode;
 			productReference = D596C7292BBACC1E008D0E9A /* QuickCode.app */;
@@ -200,8 +207,9 @@
 			);
 			name = "QuickCode iOS";
 			packageProductDependencies = (
-				D596C7582BBACF28008D0E9A /* CodeMirror-SwiftUI */,
-				D596C75C2BBACF2C008D0E9A /* SwiftUIPrint */,
+				D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */,
+				D5E1CD852BBAFE110012295A /* SwiftUIPrint */,
+				D57E00752BC181DD0061DFC7 /* DocumentKit */,
 			);
 			productName = "QuickCode iOS";
 			productReference = D596C7422BBACC9F008D0E9A /* QuickCode iOS.app */;
@@ -235,8 +243,9 @@
 			);
 			mainGroup = D596C7202BBACC1E008D0E9A;
 			packageReferences = (
-				D596C7532BBACD93008D0E9A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */,
-				D596C7542BBACDB5008D0E9A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */,
+				D5E1CD7D2BBAFDE00012295A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */,
+				D5E1CD812BBAFE050012295A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */,
+				D57E00742BC181DD0061DFC7 /* XCRemoteSwiftPackageReference "DocumentKit" */,
 			);
 			productRefGroup = D596C72A2BBACC1E008D0E9A /* Products */;
 			projectDirPath = "";
@@ -432,7 +441,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuickCode/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 Mark Howard";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -461,7 +470,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuickCode/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 Mark Howard";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -488,6 +497,7 @@
 				INFOPLIST_FILE = "QuickCode iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = QuickCode;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 Mark Howard";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -506,6 +516,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -526,6 +537,7 @@
 				INFOPLIST_FILE = "QuickCode iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = QuickCode;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024 Mark Howard";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -544,6 +556,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -584,7 +597,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D596C7532BBACD93008D0E9A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */ = {
+		D57E00742BC181DD0061DFC7 /* XCRemoteSwiftPackageReference "DocumentKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/DocumentKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
+		D5E1CD7D2BBAFDE00012295A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Pictarine/CodeMirror-SwiftUI";
 			requirement = {
@@ -592,7 +613,7 @@
 				kind = branch;
 			};
 		};
-		D596C7542BBACDB5008D0E9A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */ = {
+		D5E1CD812BBAFE050012295A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/wolfmcnally/SwiftUIPrint";
 			requirement = {
@@ -603,14 +624,24 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D596C7582BBACF28008D0E9A /* CodeMirror-SwiftUI */ = {
+		D57E00752BC181DD0061DFC7 /* DocumentKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D596C7532BBACD93008D0E9A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
+			package = D57E00742BC181DD0061DFC7 /* XCRemoteSwiftPackageReference "DocumentKit" */;
+			productName = DocumentKit;
+		};
+		D5E1CD7E2BBAFDEF0012295A /* CodeMirror-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5E1CD7D2BBAFDE00012295A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
 			productName = "CodeMirror-SwiftUI";
 		};
-		D596C75C2BBACF2C008D0E9A /* SwiftUIPrint */ = {
+		D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D596C7542BBACDB5008D0E9A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */;
+			package = D5E1CD7D2BBAFDE00012295A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
+			productName = "CodeMirror-SwiftUI";
+		};
+		D5E1CD852BBAFE110012295A /* SwiftUIPrint */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5E1CD812BBAFE050012295A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */;
 			productName = SwiftUIPrint;
 		};
 /* End XCSwiftPackageProductDependency section */

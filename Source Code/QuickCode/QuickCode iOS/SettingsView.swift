@@ -13,6 +13,8 @@ struct SettingsView: View {
     //Setup Mail Sheet View And Result Trackers
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
+    //Dismiss Settings Window Action
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         //Show Settings Sections In A Form
         Form {
@@ -21,6 +23,14 @@ struct SettingsView: View {
             misc
         }
         .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {dismiss()}) {
+                    Text("Done")
+                }
+            }
+        }
     }
     //Misc Settings Section
     var misc: some View {
@@ -31,7 +41,7 @@ struct SettingsView: View {
             LabeledContent("Build", value: "1")
             //Button To Send Feedback
             Button(action: {isShowingMailView.toggle()}) {
-                Text("Send Feedback")
+                Text("Send Feedback...")
             }
             //Feedback Mail View Sheet
             .sheet(isPresented: $isShowingMailView) {

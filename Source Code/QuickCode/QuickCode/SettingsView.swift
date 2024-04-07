@@ -29,7 +29,7 @@ struct SettingsView: View {
             misc
                 .tabItem {
                     Image(systemName: "ellipsis.circle")
-                    Text("Misc.")
+                    Text("Misc")
                 }
                 .tag(3)
         }
@@ -42,12 +42,12 @@ struct SettingsView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Text("Version - 1.0")
+                        Text("Version - \(Text("1.0").bold())")
                         Spacer()
                     }
                     HStack {
                         Spacer()
-                        Text("Build - 1")
+                        Text("Build - \(Text("1").bold())")
                         Spacer()
                     }
                 }
@@ -57,13 +57,8 @@ struct SettingsView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Text("Want To Send Some Feedback About The App?")
-                        Spacer()
-                    }
-                    HStack {
-                        Spacer()
                         Button(action: {SendEmail.send()}) {
-                            Text("Send Feedback")
+                            Text("Send Feedback...")
                         }
                         Spacer()
                     }
@@ -1316,7 +1311,7 @@ struct EditorSettings: View {
     @AppStorage("fontSize") var fontSize = 12
     var body: some View {
         Form {
-            GroupBox(label: Label("Options", systemImage: "slider.horizontal.3")) {
+            GroupBox(label: Label("Editor Options", systemImage: "slider.horizontal.3")) {
                 //Change Font Size, Toggle Line Wrapping And Toggle Invisible Characters
                 VStack {
                     HStack {

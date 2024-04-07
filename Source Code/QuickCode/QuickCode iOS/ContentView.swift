@@ -39,12 +39,14 @@ struct ContentView: View {
         return bcf
     }()
     
-    //Setup The Multi Sheet Tracker
-    @State var activeSheet: ActiveSheet?
     //Setup Appearance Tracker
     @AppStorage("selectedAppearance") var selectedAppearance = 3
     //Store Inspector State
     @AppStorage("showingInspector") var showingInspector = false
+    //Showing Settings View State
+    @State var showingSettings = false
+    //Showing Export View State
+    @State var showingExport = false
     
     //Setup File Exporter Sheet Trackers
     @State var isShowingSwiftSourceExport = false
@@ -92,23 +94,6 @@ struct ContentView: View {
                     UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .unspecified
                 }
             }
-            .inspector(isPresented: $showingInspector) {
-                //Form Showing File Metadata
-                Form {
-                    Section {
-                        Label("Title - \(fileNameAttribute)", systemImage: "textformat")
-                        Label("Extension - \(fileExtensionAttribute)", systemImage: "square.grid.3x1.folder.badge.plus")
-                        Label("Size - \(fileByteCountFormatter.string(fromByteCount: fileSizeAttribute))", systemImage: "externaldrive")
-                        Label("Path - \(filePathAttribute)", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
-                        Label("Owner - \(fileOwnerAttribute)", systemImage: "person")
-                        Label("Created - \(fileCreatedAttribute.formatted(.dateTime))", systemImage: "calendar.badge.plus")
-                        Label("Modified - \(fileModifiedAttribute.formatted(.dateTime))", systemImage: "calendar.badge.clock")
-                        Label("File Type - \(fileTypeAttribute)", systemImage: "doc")
-                    } footer: {
-                        Text("Metadata Generated From Last Time The File Was Opened")
-                    }
-                }
-            }
         //Change The App Appearance If The Picker Changes
             .onChange(of: selectedAppearance) {
                 if selectedAppearance == 1 {
@@ -122,7 +107,7 @@ struct ContentView: View {
         //Toolbar Of Quick Actions
         .toolbar(id: "quick-actions") {
             ToolbarItem(id: "settings", placement: .primaryAction) {
-                Button(action: {activeSheet = .settings}) {
+                Button(action: {showingSettings = true}) {
                     Label("Settings", systemImage: "gearshape")
                 }
                 .help("Settings")
@@ -130,17 +115,10 @@ struct ContentView: View {
             }
             ToolbarItem(id: "metadata", placement: .primaryAction) {
                 Button(action: {showingInspector.toggle()}) {
-                    Label("Metadata", systemImage: "info.circle")
+                    Label("Metadata", systemImage: "sidebar.right")
                 }
                 .help("Metadata")
                 .keyboardShortcut("i")
-            }
-            ToolbarItem(id: "export", placement: .primaryAction) {
-                Button(action: {activeSheet = .export}) {
-                    Label("Export", systemImage: "square.and.arrow.up.on.square")
-                }
-                .help("Export")
-                .keyboardShortcut("e")
             }
             ToolbarItem(id: "undo", placement: .secondaryAction) {
                 Button(action: {undoManager?.undo()}) {
@@ -177,44 +155,57 @@ struct ContentView: View {
                 .help("Copy Text")
                 .keyboardShortcut("c", modifiers: [.command, .shift])
             }
+            ToolbarItem(id: "export", placement: .secondaryAction) {
+                Button(action: {showingExport = true}) {
+                    Label("Export", systemImage: "square.and.arrow.up.on.square")
+                }
+                .help("Export")
+                .keyboardShortcut("e")
+                .sheet(isPresented: $showingExport) {
+                    NavigationStack {
+                        export
+                    }
+                }
+            }
+            ToolbarItem(id: "print", placement: .secondaryAction) {
+                PrintSetup(page:
+                        VStack {
+                            HStack {
+                                Text(document.text)
+                                Spacer()
+                            }
+                            Spacer()
+                        }
+                        .padding()
+                )
+                .help("Print")
+                .keyboardShortcut("p")
+            }
         }
-        //Sheet That Swaps Between Settings, Metadata And File Export When Differnent Buttons Pressed
-        .sheet(item: $activeSheet) { item in
-            switch item {
-            case .settings:
-                NavigationStack {
-                    SettingsView()
-                }
-            case .metadata:
-                NavigationStack {
-                    metadata
-                }
-            case .export:
-                NavigationStack {
-                    export
-                }
+        .sheet(isPresented: $showingSettings) {
+            NavigationStack {
+                SettingsView()
             }
         }
         .toolbarRole(.editor)
         .navigationBarTitleDisplayMode(.inline)
-    }
-    //Form Showing File Metadata
-    var metadata: some View {
-        Form {
-            Section {
-                Label("Title - \(fileNameAttribute)", systemImage: "textformat")
-                Label("Extension - \(fileExtensionAttribute)", systemImage: "square.grid.3x1.folder.badge.plus")
-                Label("Size - \(fileByteCountFormatter.string(fromByteCount: fileSizeAttribute))", systemImage: "externaldrive")
-                Label("Path - \(filePathAttribute)", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
-                Label("Owner - \(fileOwnerAttribute)", systemImage: "person")
-                Label("Created - \(fileCreatedAttribute.formatted(.dateTime))", systemImage: "calendar.badge.plus")
-                Label("Modified - \(fileModifiedAttribute.formatted(.dateTime))", systemImage: "calendar.badge.clock")
-                Label("File Type - \(fileTypeAttribute)", systemImage: "doc")
-            } footer: {
-                Text("Metadata Generated From Last Time The File Was Opened")
+        .inspector(isPresented: $showingInspector) {
+            //Form Showing File Metadata
+            Form {
+                Section {
+                    Label("Title - \(fileNameAttribute)", systemImage: "textformat")
+                    Label("Extension - \(fileExtensionAttribute)", systemImage: "square.grid.3x1.folder.badge.plus")
+                    Label("Size - \(fileByteCountFormatter.string(fromByteCount: fileSizeAttribute))", systemImage: "externaldrive")
+                    Label("Path - \(filePathAttribute)", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
+                    Label("Owner - \(fileOwnerAttribute)", systemImage: "person")
+                    Label("Created - \(fileCreatedAttribute.formatted(.dateTime))", systemImage: "calendar.badge.plus")
+                    Label("Modified - \(fileModifiedAttribute.formatted(.dateTime))", systemImage: "calendar.badge.clock")
+                    Label("File Type - \(fileTypeAttribute)", systemImage: "doc")
+                } footer: {
+                    Text("Metadata Generated From Last Time The File Was Opened")
+                }
             }
         }
-        .navigationTitle("Metadata")
     }
     //Form Showing Export Options, File Print Button And File Exporters
     var export: some View {
@@ -445,19 +436,12 @@ struct ContentView: View {
             }
         }
         .navigationTitle("Export")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                PrintSetup(page:
-                        VStack {
-                            HStack {
-                                Text(document.text)
-                                Spacer()
-                            }
-                            Spacer()
-                        }
-                        .padding()
-                )
-                .help("Print")
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {showingExport = false}) {
+                    Text("Done")
+                }
             }
         }
     }
@@ -521,15 +505,6 @@ extension URL {
     
     var fileOwner: String {
         return attributes?[.ownerAccountName] as? String ?? ""
-    }
-}
-
-//Setup Multi Sheet Swapping Variables
-enum ActiveSheet: Identifiable {
-    case settings, metadata, export
-    
-    var id: Int {
-        hashValue
     }
 }
 
