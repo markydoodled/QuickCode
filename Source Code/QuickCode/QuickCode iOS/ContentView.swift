@@ -8,7 +8,6 @@
 import SwiftUI
 import UniformTypeIdentifiers
 import CodeMirror_SwiftUI
-import SwiftUIPrint
 
 struct ContentView: View {
     //Load In Document
@@ -113,6 +112,13 @@ struct ContentView: View {
                 .help("Settings")
                 .keyboardShortcut(",")
             }
+            ToolbarItem(id: "update-metadata", placement: .primaryAction) {
+                Button(action: {getAttributes()}) {
+                    Label("Update Metadata", systemImage: "arrow.counterclockwise")
+                }
+                .help("Update Metadata")
+                .keyboardShortcut("r")
+            }
             ToolbarItem(id: "metadata", placement: .primaryAction) {
                 Button(action: {showingInspector.toggle()}) {
                     Label("Metadata", systemImage: "sidebar.right")
@@ -167,20 +173,6 @@ struct ContentView: View {
                     }
                 }
             }
-            ToolbarItem(id: "print", placement: .secondaryAction) {
-                PrintSetup(page:
-                        VStack {
-                            HStack {
-                                Text(document.text)
-                                Spacer()
-                            }
-                            Spacer()
-                        }
-                        .padding()
-                )
-                .help("Print")
-                .keyboardShortcut("p")
-            }
         }
         .sheet(isPresented: $showingSettings) {
             NavigationStack {
@@ -193,14 +185,44 @@ struct ContentView: View {
             //Form Showing File Metadata
             Form {
                 Section {
-                    Label("Title - \(fileNameAttribute)", systemImage: "textformat")
-                    Label("Extension - \(fileExtensionAttribute)", systemImage: "square.grid.3x1.folder.badge.plus")
-                    Label("Size - \(fileByteCountFormatter.string(fromByteCount: fileSizeAttribute))", systemImage: "externaldrive")
-                    Label("Path - \(filePathAttribute)", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
-                    Label("Owner - \(fileOwnerAttribute)", systemImage: "person")
-                    Label("Created - \(fileCreatedAttribute.formatted(.dateTime))", systemImage: "calendar.badge.plus")
-                    Label("Modified - \(fileModifiedAttribute.formatted(.dateTime))", systemImage: "calendar.badge.clock")
-                    Label("File Type - \(fileTypeAttribute)", systemImage: "doc")
+                    Text("\(fileNameAttribute)")
+                } header: {
+                    Label("Title", systemImage: "textformat")
+                }
+                Section {
+                    Text("\(fileExtensionAttribute)")
+                } header: {
+                    Label("Extension", systemImage: "square.grid.3x1.folder.badge.plus")
+                }
+                Section {
+                    Text("\(fileByteCountFormatter.string(fromByteCount: fileSizeAttribute))")
+                } header: {
+                    Label("Size", systemImage: "externaldrive")
+                }
+                Section {
+                    Text("\(filePathAttribute)")
+                } header: {
+                    Label("Path", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
+                }
+                Section {
+                    Text("\(fileOwnerAttribute)")
+                } header: {
+                    Label("Owner", systemImage: "person")
+                }
+                Section {
+                    Text("\(fileCreatedAttribute.formatted(.dateTime))")
+                } header: {
+                    Label("Created", systemImage: "calendar.badge.plus")
+                }
+                Section {
+                    Text("\(fileModifiedAttribute.formatted(.dateTime))")
+                } header: {
+                    Label("Modified", systemImage: "calendar.badge.clock")
+                }
+                Section {
+                    Text("\(fileTypeAttribute)")
+                } header: {
+                    Label("File Type", systemImage: "doc")
                 } footer: {
                     Text("Metadata Generated From Last Time The File Was Opened")
                 }
@@ -437,6 +459,7 @@ struct ContentView: View {
         }
         .navigationTitle("Export")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button(action: {showingExport = false}) {
@@ -516,16 +539,6 @@ extension UIApplication {
             .first(where: { $0 is UIWindowScene })
             .flatMap({ $0 as? UIWindowScene })?.windows
             .first(where: \.isKeyWindow)
-    }
-}
-
-//Setup The Print File Button View
-struct PrintSetup<Page>: View where Page: View {
-    let page: Page
-    var body: some View {
-        Button(action: {presentPrintInteractionController(page: page)}) {
-            Image(systemName: "printer")
-        }
     }
 }
 

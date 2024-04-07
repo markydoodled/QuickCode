@@ -24,6 +24,7 @@ struct SettingsView: View {
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button(action: {dismiss()}) {
@@ -38,7 +39,15 @@ struct SettingsView: View {
             //Version Text
             LabeledContent("Version", value: "1.0")
             //Build Text
-            LabeledContent("Build", value: "2")
+            LabeledContent("Build", value: "3")
+            //Portfolio Link
+            Link(destination: URL(string: "https://github.com/markydoodled/QuickCode")!) {
+                Text("GitHub Repository")
+            }
+            //
+            Link(destination: URL(string: "http://markydoodled.github.io/portfolio/")!) {
+                Text("Portfolio")
+            }
             //Button To Send Feedback
             Button(action: {isShowingMailView.toggle()}) {
                 Text("Send Feedback...")
@@ -48,7 +57,7 @@ struct SettingsView: View {
                 MailView(isShowing: self.$isShowingMailView, result: self.$result)
             }
         } header: {
-            Label("Misc.", systemImage: "info.circle")
+            Label("Misc", systemImage: "info.circle")
         }
     }
 }
@@ -1285,7 +1294,7 @@ struct ThemesSettings: View {
                 }
             }
         } header: {
-            Label("Themes", systemImage: "moon")
+            Label("Themes And Styles", systemImage: "moon")
         }
     }
 }
@@ -1310,7 +1319,7 @@ struct EditorSettings: View {
             }
             .toggleStyle(.switch)
         } header: {
-            Label("Editor", systemImage: "pencil")
+            Label("Editor Options", systemImage: "pencil")
         }
     }
 }
@@ -1350,6 +1359,9 @@ struct MailView: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
         let vc = MFMailComposeViewController()
         vc.mailComposeDelegate = context.coordinator
+        vc.setSubject("QuickCode Feedback")
+        vc.setToRecipients(["markhoward2005@gmail.com"])
+        vc.setMessageBody("Please Fill Out All Relevant Sections:\nReport A Bug - \nRate The App - \nSuggest An Improvment - \n", isHTML: false)
         return vc
     }
 

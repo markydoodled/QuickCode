@@ -25,7 +25,6 @@
 		D5E1CD802BBAFDEF0012295A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD7E2BBAFDEF0012295A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D5E1CD832BBAFE0E0012295A /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */; };
 		D5E1CD842BBAFE0E0012295A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		D5E1CD862BBAFE110012295A /* SwiftUIPrint in Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD852BBAFE110012295A /* SwiftUIPrint */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,7 +87,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D57E00762BC181DD0061DFC7 /* DocumentKit in Frameworks */,
-				D5E1CD862BBAFE110012295A /* SwiftUIPrint in Frameworks */,
 				D5E1CD832BBAFE0E0012295A /* CodeMirror-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,7 +206,6 @@
 			name = "QuickCode iOS";
 			packageProductDependencies = (
 				D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */,
-				D5E1CD852BBAFE110012295A /* SwiftUIPrint */,
 				D57E00752BC181DD0061DFC7 /* DocumentKit */,
 			);
 			productName = "QuickCode iOS";
@@ -244,7 +241,6 @@
 			mainGroup = D596C7202BBACC1E008D0E9A;
 			packageReferences = (
 				D5E1CD7D2BBAFDE00012295A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */,
-				D5E1CD812BBAFE050012295A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */,
 				D57E00742BC181DD0061DFC7 /* XCRemoteSwiftPackageReference "DocumentKit" */,
 			);
 			productRefGroup = D596C72A2BBACC1E008D0E9A /* Products */;
@@ -433,7 +429,7 @@
 				CODE_SIGN_ENTITLEMENTS = QuickCode/QuickCode.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickCode/Preview Content\"";
 				DEVELOPMENT_TEAM = ZWASU9HFBU;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -462,7 +458,7 @@
 				CODE_SIGN_ENTITLEMENTS = QuickCode/QuickCode.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickCode/Preview Content\"";
 				DEVELOPMENT_TEAM = ZWASU9HFBU;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -489,7 +485,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickCode iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = ZWASU9HFBU;
 				ENABLE_PREVIEWS = YES;
@@ -529,7 +525,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickCode iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = ZWASU9HFBU;
 				ENABLE_PREVIEWS = YES;
@@ -613,14 +609,6 @@
 				kind = branch;
 			};
 		};
-		D5E1CD812BBAFE050012295A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/wolfmcnally/SwiftUIPrint";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -638,11 +626,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5E1CD7D2BBAFDE00012295A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
 			productName = "CodeMirror-SwiftUI";
-		};
-		D5E1CD852BBAFE110012295A /* SwiftUIPrint */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5E1CD812BBAFE050012295A /* XCRemoteSwiftPackageReference "SwiftUIPrint" */;
-			productName = SwiftUIPrint;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -12,6 +12,9 @@ import AppKit
 struct ContentView: View {
     //Load In Document
     @Binding var document: QuickCodeDocument
+    
+    //Load Undo/Redo Manager
+    @Environment(\.undoManager) var undoManager
 
     //Load In Settings
     @State var editor = EditorSettings()
@@ -38,6 +41,30 @@ struct ContentView: View {
     @AppStorage("selectedAppearance") var selectedAppearance = 3
     //Store Inspector State
     @AppStorage("showingInspector") var showingInspector = false
+    //Showing Export View State
+    @State var showingExport = false
+    
+    //Setup File Exporter Sheet Trackers
+    @State var isShowingSwiftSourceExport = false
+    @State var isShowingPlainTextExport = false
+    @State var isShowingXMLExport = false
+    @State var isShowingYAMLExport = false
+    @State var isShowingJSONExport = false
+    @State var isShowingHTMLExport = false
+    @State var isShowingAssemblyExport = false
+    @State var isShowingCHeaderExport = false
+    @State var isShowingCSourceExport = false
+    @State var isShowingCPlusPlusHeaderExport = false
+    @State var isShowingCPlusPlusSourceExport = false
+    @State var isShowingObjectiveCPlusPlusSourceExport = false
+    @State var isShowingObjectiveCSourceExport = false
+    @State var isShowingAppleScriptExport = false
+    @State var isShowingJavaScriptExport = false
+    @State var isShowingShellScriptExport = false
+    @State var isShowingPythonScriptExport = false
+    @State var isShowingRubyScriptExport = false
+    @State var isShowingPerlScriptExport = false
+    @State var isShowingPHPScriptExport = false
     var body: some View {
         //Code Editor View
         GeometryReader { reader in
@@ -115,14 +142,14 @@ struct ContentView: View {
             .toolbar(id: "quick-actions") {
                 Group {
                     ToolbarItem(id: "undo", placement: .navigation) {
-                        Button(action: {}) {
+                        Button(action: {undoManager?.undo()}) {
                             Label("Undo", systemImage: "arrow.uturn.backward")
                         }
                         .help("Undo")
                     }
                     ToolbarItem(id: "redo", placement: .navigation) {
-                        Button(action: {}) {
-                            Label("Redi", systemImage: "arrow.uturn.forward")
+                        Button(action: {undoManager?.redo()}) {
+                            Label("Redo", systemImage: "arrow.uturn.forward")
                         }
                         .help("Redo")
                     }
@@ -164,7 +191,7 @@ struct ContentView: View {
                         Button(action: {copyToClipBoard(textToCopy: document.text)}) {
                             Label("Copy", systemImage: "text.badge.plus")
                         }
-                        .help("Copy Text")
+                        .help("Copy Document Text")
                         .keyboardShortcut("c", modifiers: [.command, .shift])
                     }
                     ToolbarItem(id: "move-doc", placement: .secondaryAction) {
@@ -198,10 +225,13 @@ struct ContentView: View {
                         .help("Change Appearance")
                     }
                     ToolbarItem(id: "export", placement: .secondaryAction) {
-                        Button(action: {}) {
+                        Button(action: {showingExport = true}) {
                             Label("Export", systemImage: "square.and.arrow.up.on.square")
                         }
                         .help("Export Document")
+                        .popover(isPresented: $showingExport) {
+                            export
+                        }
                     }
                 }
             }
@@ -253,6 +283,235 @@ struct ContentView: View {
                 NSApp.appearance = NSAppearance(named: .darkAqua)
             } else {
                 NSApp.appearance = nil
+            }
+        }
+    }
+    //Form Showing Export Options, File Print Button And File Exporters
+    var export: some View {
+        List {
+            Group {
+                Button(action: {isShowingSwiftSourceExport.toggle()}) {
+                    Text("Swift")
+                }
+                .fileExporter(isPresented: $isShowingSwiftSourceExport, document: document, contentType: .swiftSource, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingPlainTextExport.toggle()}) {
+                    Text("Plain Text")
+                }
+                .fileExporter(isPresented: $isShowingPlainTextExport, document: document, contentType: .plainText, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingXMLExport.toggle()}) {
+                    Text("XML")
+                }
+                .fileExporter(isPresented: $isShowingXMLExport, document: document, contentType: .xml, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingYAMLExport.toggle()}) {
+                    Text("YAML")
+                }
+                .fileExporter(isPresented: $isShowingYAMLExport, document: document, contentType: .yaml, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingJSONExport.toggle()}) {
+                    Text("JSON")
+                }
+                .fileExporter(isPresented: $isShowingJSONExport, document: document, contentType: .json, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingHTMLExport.toggle()}) {
+                    Text("HTML")
+                }
+                .fileExporter(isPresented: $isShowingHTMLExport, document: document, contentType: .html, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingAssemblyExport.toggle()}) {
+                    Text("Assembly")
+                }
+                .fileExporter(isPresented: $isShowingAssemblyExport, document: document, contentType: .assemblyLanguageSource, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingCHeaderExport.toggle()}) {
+                    Text("C Header")
+                }
+                .fileExporter(isPresented: $isShowingCHeaderExport, document: document, contentType: .cHeader, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingCSourceExport.toggle()}) {
+                    Text("C Source")
+                }
+                .fileExporter(isPresented: $isShowingCSourceExport, document: document, contentType: .cSource, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingCPlusPlusHeaderExport.toggle()}) {
+                    Text("C++ Header")
+                }
+                .fileExporter(isPresented: $isShowingCPlusPlusHeaderExport, document: document, contentType: .cPlusPlusHeader, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            Group {
+                Button(action: {isShowingCPlusPlusSourceExport.toggle()}) {
+                    Text("C++ Source")
+                }
+                .fileExporter(isPresented: $isShowingCPlusPlusSourceExport, document: document, contentType: .cPlusPlusSource, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingObjectiveCPlusPlusSourceExport.toggle()}) {
+                    Text("Objective C++")
+                }
+                .fileExporter(isPresented: $isShowingObjectiveCPlusPlusSourceExport, document: document, contentType: .objectiveCPlusPlusSource, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingObjectiveCSourceExport.toggle()}) {
+                    Text("Objective C")
+                }
+                .fileExporter(isPresented: $isShowingObjectiveCSourceExport, document: document, contentType: .objectiveCSource, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingAppleScriptExport.toggle()}) {
+                    Text("AppleScript")
+                }
+                .fileExporter(isPresented: $isShowingAppleScriptExport, document: document, contentType: .appleScript, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingJavaScriptExport.toggle()}) {
+                    Text("JavaScript")
+                }
+                .fileExporter(isPresented: $isShowingJavaScriptExport, document: document, contentType: .javaScript, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingShellScriptExport.toggle()}) {
+                    Text("Shell Script")
+                }
+                .fileExporter(isPresented: $isShowingShellScriptExport, document: document, contentType: .shellScript, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingPythonScriptExport.toggle()}) {
+                    Text("Python")
+                }
+                .fileExporter(isPresented: $isShowingPythonScriptExport, document: document, contentType: .pythonScript, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingRubyScriptExport.toggle()}) {
+                    Text("Ruby")
+                }
+                .fileExporter(isPresented: $isShowingRubyScriptExport, document: document, contentType: .rubyScript, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingPerlScriptExport.toggle()}) {
+                    Text("Perl")
+                }
+                .fileExporter(isPresented: $isShowingPerlScriptExport, document: document, contentType: .perlScript, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                Button(action: {isShowingPHPScriptExport.toggle()}) {
+                    Text("PHP")
+                }
+                .fileExporter(isPresented: $isShowingPHPScriptExport, document: document, contentType: .phpScript, defaultFilename: "Exported File") { result in
+                    switch result {
+                    case .success(let url):
+                        print("Saved To \(url)")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
             }
         }
     }

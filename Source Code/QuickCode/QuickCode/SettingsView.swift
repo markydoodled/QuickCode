@@ -11,6 +11,8 @@ import CodeMirror_SwiftUI
 struct SettingsView: View {
     //Track Tab Selection
     @State var tabSelection = 1
+    //Trigger Open URL Link
+    @Environment(\.openURL) var openURL
     var body: some View {
         //Set Tab View Between Settings Pages
         TabView(selection: $tabSelection) {
@@ -47,7 +49,7 @@ struct SettingsView: View {
                     }
                     HStack {
                         Spacer()
-                        Text("Build - \(Text("2").bold())")
+                        Text("Build - \(Text("3").bold())")
                         Spacer()
                     }
                 }
@@ -59,6 +61,20 @@ struct SettingsView: View {
                         Spacer()
                         Button(action: {SendEmail.send()}) {
                             Text("Send Feedback...")
+                        }
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Button(action: {openURL(URL(string: "https://github.com/markydoodled/QuickCode")!)}) {
+                            Text("GitHub Repository")
+                        }
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Button(action: {openURL(URL(string: "http://markydoodled.github.io/portfolio/")!)}) {
+                            Text("Portfolio")
                         }
                         Spacer()
                     }
