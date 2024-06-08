@@ -1361,7 +1361,7 @@ struct MailView: UIViewControllerRepresentable {
         vc.mailComposeDelegate = context.coordinator
         vc.setSubject("QuickCode Feedback")
         vc.setToRecipients(["markhoward2005@gmail.com"])
-        vc.setMessageBody("Please Fill Out All Relevant Sections:\nReport A Bug - \nRate The App - \nSuggest An Improvment - \n", isHTML: false)
+        vc.setMessageBody("Please Fill Out All Relevant Sections:\nReport A Bug - \nRate The App - \nSuggest An Improvement - \n", isHTML: false)
         return vc
     }
 
