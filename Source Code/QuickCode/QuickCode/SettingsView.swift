@@ -1356,7 +1356,7 @@ class SendEmail: NSObject {
         let service = NSSharingService(named: NSSharingService.Name.composeEmail)!
         service.recipients = ["markhoward2005@gmail.com"]
         service.subject = "QuickCode Feedback"
-        service.perform(withItems: ["Please Fill Out All Relevant Sections:", "Report A Bug - ", "Rate The App - ", "Suggest An Improvment - "])
+        service.perform(withItems: ["Please Fill Out All Relevant Sections:", "Report A Bug - ", "Rate The App - ", "Suggest An Improvement - "])
     }
 }
 
