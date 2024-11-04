@@ -12,14 +12,12 @@ import CodeMirror_SwiftUI
 struct ContentView: View {
     //Load In Document
     @Binding var document: QuickCode_iOSDocument
-
     //Load Undo/Redo Manager
     @Environment(\.undoManager) var undoManager
-    
+    //Add Environment Dismiss Action
+    @Environment(\.dismiss) private var dismiss
     //Load In Editor And Theme Settings
-    @State var editor = EditorSettings()
-    @State var themes = ThemesSettings()
-    
+    @State var settings = SettingsView()
     //Create Metadata Stores
     @State var fileURL: URL
     @State var fileTypeAttribute: String
@@ -37,194 +35,224 @@ struct ContentView: View {
         bcf.countStyle = .file
         return bcf
     }()
-    
     //Setup Appearance Tracker
     @AppStorage("selectedAppearance") var selectedAppearance = 3
     //Store Inspector State
     @AppStorage("showingInspector") var showingInspector = false
     //Showing Settings View State
-    @State var showingSettings = false
+    @State private var showingSettings = false
     //Showing Export View State
-    @State var showingExport = false
-    
+    @State private var showingExport = false
     //Setup File Exporter Sheet Trackers
-    @State var isShowingSwiftSourceExport = false
-    @State var isShowingPlainTextExport = false
-    @State var isShowingXMLExport = false
-    @State var isShowingYAMLExport = false
-    @State var isShowingJSONExport = false
-    @State var isShowingHTMLExport = false
-    @State var isShowingAssemblyExport = false
-    @State var isShowingCHeaderExport = false
-    @State var isShowingCSourceExport = false
-    @State var isShowingCPlusPlusHeaderExport = false
-    @State var isShowingCPlusPlusSourceExport = false
-    @State var isShowingObjectiveCPlusPlusSourceExport = false
-    @State var isShowingObjectiveCSourceExport = false
-    @State var isShowingAppleScriptExport = false
-    @State var isShowingJavaScriptExport = false
-    @State var isShowingShellScriptExport = false
-    @State var isShowingPythonScriptExport = false
-    @State var isShowingRubyScriptExport = false
-    @State var isShowingPerlScriptExport = false
-    @State var isShowingPHPScriptExport = false
+    @State private var isShowingSwiftSourceExport = false
+    @State private var isShowingPlainTextExport = false
+    @State private var isShowingXMLExport = false
+    @State private var isShowingYAMLExport = false
+    @State private var isShowingJSONExport = false
+    @State private var isShowingHTMLExport = false
+    @State private var isShowingAssemblyExport = false
+    @State private var isShowingCHeaderExport = false
+    @State private var isShowingCSourceExport = false
+    @State private var isShowingCPlusPlusHeaderExport = false
+    @State private var isShowingCPlusPlusSourceExport = false
+    @State private var isShowingObjectiveCPlusPlusSourceExport = false
+    @State private var isShowingObjectiveCSourceExport = false
+    @State private var isShowingAppleScriptExport = false
+    @State private var isShowingJavaScriptExport = false
+    @State private var isShowingShellScriptExport = false
+    @State private var isShowingPythonScriptExport = false
+    @State private var isShowingRubyScriptExport = false
+    @State private var isShowingPerlScriptExport = false
+    @State private var isShowingPHPScriptExport = false
     var body: some View {
-        //Code Editor View
-        CodeView(theme: themes.theme, code: $document.text, mode: themes.syntax.mode(), fontSize: editor.fontSize, showInvisibleCharacters: editor.showInvisibleCharacters, lineWrapping: editor.lineWrapping)
-        //On Editor Load Get File Attributes
-            .onLoadSuccess {
-                getAttributes()
-            }
-        //Error If The Editor Fails To Load
-            .onLoadFail { error in
-                print("Load Failed: \(error.localizedDescription)")
-            }
-        //Refetch The Attributes If The Document Contents Is Changed
-            .onContentChange { change in
-                getAttributes()
-            }
-        //Set The Appearance On View Load
-            .onAppear {
-                if selectedAppearance == 1 {
-                    UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .light
-                } else if selectedAppearance == 2 {
-                    UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .dark
-                } else {
-                    UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .unspecified
+        NavigationStack {
+            //Code Editor View
+            CodeView(theme: settings.theme, code: $document.text, mode: settings.syntax.mode(), fontSize: settings.fontSize, showInvisibleCharacters: settings.showInvisibleCharacters, lineWrapping: settings.lineWrapping)
+            //On Editor Load Get File Attributes
+                .onLoadSuccess {
+                    getAttributes()
                 }
-            }
-        //Change The App Appearance If The Picker Changes
-            .onChange(of: selectedAppearance) {
-                if selectedAppearance == 1 {
-                    UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .light
-                } else if selectedAppearance == 2 {
-                    UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .dark
-                } else {
-                    UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .unspecified
+            //Error If The Editor Fails To Load
+                .onLoadFail { error in
+                    print("Load Failed: \(error.localizedDescription)")
                 }
-            }
-        //Toolbar Of Quick Actions
-        .toolbar(id: "quick-actions") {
-            ToolbarItem(id: "settings", placement: .primaryAction) {
-                Button(action: {showingSettings = true}) {
-                    Label("Settings", systemImage: "gearshape")
-                }
-                .help("Settings")
-                .keyboardShortcut(",")
-            }
-            ToolbarItem(id: "update-metadata", placement: .primaryAction) {
-                Button(action: {getAttributes()}) {
-                    Label("Update Metadata", systemImage: "arrow.counterclockwise")
-                }
-                .help("Update Metadata")
-                .keyboardShortcut("r")
-            }
-            ToolbarItem(id: "metadata", placement: .primaryAction) {
-                Button(action: {showingInspector.toggle()}) {
-                    Label("Metadata", systemImage: "sidebar.right")
-                }
-                .help("Metadata")
-                .keyboardShortcut("i")
-            }
-            ToolbarItem(id: "undo", placement: .secondaryAction) {
-                Button(action: {undoManager?.undo()}) {
-                    Label("Undo", systemImage: "arrow.uturn.backward")
-                }
-                .help("Undo")
-            }
-            ToolbarItem(id: "redo", placement: .secondaryAction) {
-                Button(action: {undoManager?.redo()}) {
-                    Label("Redo", systemImage: "arrow.uturn.forward")
-                }
-                .help("Redo")
-            }
-            ToolbarItem(id: "change-appearance", placement: .secondaryAction) {
-                Menu {
-                    Button(action: {selectedAppearance = 1}) {
-                        Text("Light")
+            //Set The Appearance On View Load
+                .onAppear {
+                    if selectedAppearance == 1 {
+                        UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .light
+                    } else if selectedAppearance == 2 {
+                        UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .dark
+                    } else {
+                        UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .unspecified
                     }
-                    Button(action: {selectedAppearance = 2}) {
-                        Text("Dark")
+                }
+            //Change The App Appearance If The Picker Changes
+                .onChange(of: selectedAppearance) {
+                    if selectedAppearance == 1 {
+                        UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .light
+                    } else if selectedAppearance == 2 {
+                        UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .dark
+                    } else {
+                        UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .unspecified
                     }
-                    Button(action: {selectedAppearance = 3}) {
-                        Text("System")
+                }
+                .toolbarRole(.editor)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle($fileNameAttribute)
+                .onChange(of: fileNameAttribute) {
+                    if fileNameAttribute != "N/A" {
+                        let newName = fileNameAttribute
+                        let oldExtension = fileURL.pathExtension
+                        let newPath = fileURL.deletingLastPathComponent().appendingPathComponent(newName + "." + oldExtension)
+                        do {
+                            try FileManager.default.moveItem(atPath: fileURL.path(), toPath: newPath.path())
+                        } catch {
+                            print(error.localizedDescription)
+                        }
                     }
-                } label: {
-                    Label("Appearance", systemImage: "cloud.sun")
                 }
-                .help("Change Appearance")
-            }
-            ToolbarItem(id: "copy-doc", placement: .secondaryAction) {
-                Button(action: {copyToClipBoard(textToCopy: document.text)}) {
-                    Label("Copy", systemImage: "text.badge.plus")
+                .navigationDocument(fileURL)
+            //Toolbar Of Quick Actions
+                .toolbar(id: "quick-actions") {
+                    ToolbarItem(id: "dismiss-document", placement: .navigation) {
+                        Button(action: {dismiss()}) {
+                            Label("Back", systemImage: "chevron.left")
+                        }
+                    }
+                    ToolbarItem(id: "metadata", placement: .primaryAction) {
+                        Button(action: {showingInspector.toggle()}) {
+                            Label("Metadata", systemImage: "sidebar.right")
+                        }
+                        .help("Metadata")
+                        .keyboardShortcut("i")
+                    }
+                    ToolbarItem(id: "undo", placement: .secondaryAction) {
+                        Button(action: {undoManager?.undo()}) {
+                            Label("Undo", systemImage: "arrow.uturn.backward")
+                        }
+                        .help("Undo")
+                    }
+                    ToolbarItem(id: "redo", placement: .secondaryAction) {
+                        Button(action: {undoManager?.redo()}) {
+                            Label("Redo", systemImage: "arrow.uturn.forward")
+                        }
+                        .help("Redo")
+                    }
+                    ToolbarItem(id: "change-appearance", placement: .secondaryAction) {
+                        Menu {
+                            Button(action: {selectedAppearance = 1}) {
+                                Label("Light", systemImage: "sun.max")
+                            }
+                            Button(action: {selectedAppearance = 2}) {
+                                Label("Dark", systemImage: "moon")
+                            }
+                            Button(action: {selectedAppearance = 3}) {
+                                Label("System", systemImage: "laptopcomputer")
+                            }
+                        } label: {
+                            Label("Appearance", systemImage: "cloud.sun")
+                        }
+                        .help("Change Appearance")
+                    }
+                    ToolbarItem(id: "copy-doc", placement: .secondaryAction) {
+                        Button(action: {copyToClipBoard(textToCopy: document.text)}) {
+                            Label("Copy", systemImage: "text.badge.plus")
+                        }
+                        .help("Copy Text")
+                        .keyboardShortcut("c", modifiers: [.command, .shift])
+                    }
+                    ToolbarItem(id: "export", placement: .secondaryAction) {
+                        Button(action: {showingExport = true}) {
+                            Label("Export", systemImage: "square.and.arrow.up.on.square")
+                        }
+                        .help("Export")
+                        .keyboardShortcut("e")
+                        .sheet(isPresented: $showingExport) {
+                            NavigationStack {
+                                export
+                            }
+                        }
+                    }
+                    ToolbarItem(id: "settings", placement: .secondaryAction) {
+                        Button(action: {showingSettings = true}) {
+                            Label("Settings", systemImage: "gearshape")
+                        }
+                        .help("Settings")
+                        .keyboardShortcut(",")
+                    }
                 }
-                .help("Copy Text")
-                .keyboardShortcut("c", modifiers: [.command, .shift])
-            }
-            ToolbarItem(id: "export", placement: .secondaryAction) {
-                Button(action: {showingExport = true}) {
-                    Label("Export", systemImage: "square.and.arrow.up.on.square")
-                }
-                .help("Export")
-                .keyboardShortcut("e")
-                .sheet(isPresented: $showingExport) {
+                .sheet(isPresented: $showingSettings) {
                     NavigationStack {
-                        export
+                        SettingsView()
                     }
                 }
-            }
         }
-        .sheet(isPresented: $showingSettings) {
-            NavigationStack {
-                SettingsView()
-            }
-        }
-        .toolbarRole(.editor)
-        .navigationBarTitleDisplayMode(.inline)
         .inspector(isPresented: $showingInspector) {
-            //Form Showing File Metadata
-            Form {
-                Section {
-                    Text("\(fileNameAttribute)")
-                } header: {
-                    Label("Title", systemImage: "textformat")
+            NavigationStack {
+                //Form Showing File Metadata
+                Form {
+                    Section {
+                        Text("\(fileNameAttribute)")
+                            .textSelection(.enabled)
+                    } header: {
+                        Label("Title", systemImage: "textformat")
+                    }
+                    Section {
+                        Text("\(fileExtensionAttribute)")
+                            .textSelection(.enabled)
+                    } header: {
+                        Label("Extension", systemImage: "square.grid.3x1.folder.badge.plus")
+                    }
+                    Section {
+                        Text("\(fileByteCountFormatter.string(fromByteCount: fileSizeAttribute))")
+                            .textSelection(.enabled)
+                    } header: {
+                        Label("Size", systemImage: "externaldrive")
+                    }
+                    Section {
+                        Text("\(filePathAttribute)")
+                            .textSelection(.enabled)
+                    } header: {
+                        Label("Path", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
+                    }
+                    Section {
+                        Text("\(fileOwnerAttribute)")
+                            .textSelection(.enabled)
+                    } header: {
+                        Label("Owner", systemImage: "person")
+                    }
+                    Section {
+                        Text("\(fileCreatedAttribute.formatted(.dateTime))")
+                            .textSelection(.enabled)
+                    } header: {
+                        Label("Created", systemImage: "calendar.badge.plus")
+                    }
+                    Section {
+                        Text("\(fileModifiedAttribute.formatted(.dateTime))")
+                            .textSelection(.enabled)
+                    } header: {
+                        Label("Modified", systemImage: "calendar.badge.clock")
+                    }
+                    Section {
+                        Text("\(fileTypeAttribute)")
+                            .textSelection(.enabled)
+                    } header: {
+                        Label("File Type", systemImage: "doc")
+                    } footer: {
+                        Text("Metadata Generated From Last Time The File Was Opened")
+                    }
                 }
-                Section {
-                    Text("\(fileExtensionAttribute)")
-                } header: {
-                    Label("Extension", systemImage: "square.grid.3x1.folder.badge.plus")
-                }
-                Section {
-                    Text("\(fileByteCountFormatter.string(fromByteCount: fileSizeAttribute))")
-                } header: {
-                    Label("Size", systemImage: "externaldrive")
-                }
-                Section {
-                    Text("\(filePathAttribute)")
-                } header: {
-                    Label("Path", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
-                }
-                Section {
-                    Text("\(fileOwnerAttribute)")
-                } header: {
-                    Label("Owner", systemImage: "person")
-                }
-                Section {
-                    Text("\(fileCreatedAttribute.formatted(.dateTime))")
-                } header: {
-                    Label("Created", systemImage: "calendar.badge.plus")
-                }
-                Section {
-                    Text("\(fileModifiedAttribute.formatted(.dateTime))")
-                } header: {
-                    Label("Modified", systemImage: "calendar.badge.clock")
-                }
-                Section {
-                    Text("\(fileTypeAttribute)")
-                } header: {
-                    Label("File Type", systemImage: "doc")
-                } footer: {
-                    Text("Metadata Generated From Last Time The File Was Opened")
+                .navigationTitle("Metadata")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden()
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button(action: {getAttributes()}) {
+                            Label("Update Metadata", systemImage: "arrow.counterclockwise")
+                        }
+                        .help("Update Metadata")
+                        .keyboardShortcut("r")
+                    }
                 }
             }
         }
@@ -233,10 +261,10 @@ struct ContentView: View {
     var export: some View {
         Form {
             Group {
-                Button(action: {isShowingSwiftSourceExport.toggle()}) {
-                    Text("Swift")
+                Button("Swift") {
+                    isShowingSwiftSourceExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingSwiftSourceExport, document: document, contentType: .swiftSource, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingSwiftSourceExport, document: document, contentType: .swiftSource, defaultFilename: "Exported Swift File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -244,10 +272,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingPlainTextExport.toggle()}) {
-                    Text("Plain Text")
+                Button("Plain Text") {
+                    isShowingPlainTextExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingPlainTextExport, document: document, contentType: .plainText, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingPlainTextExport, document: document, contentType: .plainText, defaultFilename: "Exported Text File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -255,10 +283,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingXMLExport.toggle()}) {
-                    Text("XML")
+                Button("XML") {
+                    isShowingXMLExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingXMLExport, document: document, contentType: .xml, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingXMLExport, document: document, contentType: .xml, defaultFilename: "Exported XML File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -266,10 +294,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingYAMLExport.toggle()}) {
-                    Text("YAML")
+                Button("YAML") {
+                    isShowingYAMLExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingYAMLExport, document: document, contentType: .yaml, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingYAMLExport, document: document, contentType: .yaml, defaultFilename: "Exported YAML File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -277,10 +305,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingJSONExport.toggle()}) {
-                    Text("JSON")
+                Button("JSON") {
+                    isShowingJSONExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingJSONExport, document: document, contentType: .json, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingJSONExport, document: document, contentType: .json, defaultFilename: "Exported JSON File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -288,10 +316,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingHTMLExport.toggle()}) {
-                    Text("HTML")
+                Button("HTML") {
+                    isShowingHTMLExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingHTMLExport, document: document, contentType: .html, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingHTMLExport, document: document, contentType: .html, defaultFilename: "Exported HTML File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -299,10 +327,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingAssemblyExport.toggle()}) {
-                    Text("Assembly")
+                Button("Assembly") {
+                    isShowingAssemblyExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingAssemblyExport, document: document, contentType: .assemblyLanguageSource, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingAssemblyExport, document: document, contentType: .assemblyLanguageSource, defaultFilename: "Exported Assembly File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -310,10 +338,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingCHeaderExport.toggle()}) {
-                    Text("C Header")
+                Button("C Header") {
+                    isShowingCHeaderExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingCHeaderExport, document: document, contentType: .cHeader, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingCHeaderExport, document: document, contentType: .cHeader, defaultFilename: "Exported C Header File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -321,10 +349,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingCSourceExport.toggle()}) {
-                    Text("C Source")
+                Button("C Source") {
+                    isShowingCSourceExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingCSourceExport, document: document, contentType: .cSource, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingCSourceExport, document: document, contentType: .cSource, defaultFilename: "Exported C Source File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -332,10 +360,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingCPlusPlusHeaderExport.toggle()}) {
-                    Text("C++ Header")
+                Button("C++ Header") {
+                    isShowingCPlusPlusHeaderExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingCPlusPlusHeaderExport, document: document, contentType: .cPlusPlusHeader, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingCPlusPlusHeaderExport, document: document, contentType: .cPlusPlusHeader, defaultFilename: "Exported C++ Header File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -345,10 +373,10 @@ struct ContentView: View {
                 }
             }
             Group {
-                Button(action: {isShowingCPlusPlusSourceExport.toggle()}) {
-                    Text("C++ Source")
+                Button("C++ Source") {
+                    isShowingCPlusPlusSourceExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingCPlusPlusSourceExport, document: document, contentType: .cPlusPlusSource, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingCPlusPlusSourceExport, document: document, contentType: .cPlusPlusSource, defaultFilename: "Exported C++ Source File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -356,10 +384,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingObjectiveCPlusPlusSourceExport.toggle()}) {
-                    Text("Objective C++")
+                Button("Objective C++") {
+                    isShowingObjectiveCPlusPlusSourceExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingObjectiveCPlusPlusSourceExport, document: document, contentType: .objectiveCPlusPlusSource, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingObjectiveCPlusPlusSourceExport, document: document, contentType: .objectiveCPlusPlusSource, defaultFilename: "Exported Objective C++ File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -367,10 +395,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingObjectiveCSourceExport.toggle()}) {
-                    Text("Objective C")
+                Button("Objective C") {
+                    isShowingObjectiveCSourceExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingObjectiveCSourceExport, document: document, contentType: .objectiveCSource, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingObjectiveCSourceExport, document: document, contentType: .objectiveCSource, defaultFilename: "Exported Objective C File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -378,10 +406,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingAppleScriptExport.toggle()}) {
-                    Text("AppleScript")
+                Button("AppleScript") {
+                    isShowingAppleScriptExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingAppleScriptExport, document: document, contentType: .appleScript, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingAppleScriptExport, document: document, contentType: .appleScript, defaultFilename: "Exported AppleScript File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -389,10 +417,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingJavaScriptExport.toggle()}) {
-                    Text("JavaScript")
+                Button("JavaScript") {
+                    isShowingJavaScriptExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingJavaScriptExport, document: document, contentType: .javaScript, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingJavaScriptExport, document: document, contentType: .javaScript, defaultFilename: "Exported JavaScript File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -400,10 +428,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingShellScriptExport.toggle()}) {
-                    Text("Shell Script")
+                Button("Shell Script") {
+                    isShowingShellScriptExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingShellScriptExport, document: document, contentType: .shellScript, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingShellScriptExport, document: document, contentType: .shellScript, defaultFilename: "Exported Shell Script File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -411,10 +439,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingPythonScriptExport.toggle()}) {
-                    Text("Python")
+                Button("Python") {
+                    isShowingPythonScriptExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingPythonScriptExport, document: document, contentType: .pythonScript, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingPythonScriptExport, document: document, contentType: .pythonScript, defaultFilename: "Exported Python File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -422,10 +450,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingRubyScriptExport.toggle()}) {
-                    Text("Ruby")
+                Button("Ruby") {
+                    isShowingRubyScriptExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingRubyScriptExport, document: document, contentType: .rubyScript, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingRubyScriptExport, document: document, contentType: .rubyScript, defaultFilename: "Exported Ruby File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -433,10 +461,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingPerlScriptExport.toggle()}) {
-                    Text("Perl")
+                Button("Perl") {
+                    isShowingPerlScriptExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingPerlScriptExport, document: document, contentType: .perlScript, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingPerlScriptExport, document: document, contentType: .perlScript, defaultFilename: "Exported Perl File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -444,10 +472,10 @@ struct ContentView: View {
                         print(error.localizedDescription)
                     }
                 }
-                Button(action: {isShowingPHPScriptExport.toggle()}) {
-                    Text("PHP")
+                Button("PHP") {
+                    isShowingPHPScriptExport.toggle()
                 }
-                .fileExporter(isPresented: $isShowingPHPScriptExport, document: document, contentType: .phpScript, defaultFilename: "Exported File") { result in
+                .fileExporter(isPresented: $isShowingPHPScriptExport, document: document, contentType: .phpScript, defaultFilename: "Exported PHP File") { result in
                     switch result {
                     case .success(let url):
                         print("Saved To \(url)")
@@ -478,7 +506,6 @@ struct ContentView: View {
         let fileextension = fileURL.pathExtension
         let filePath = fileURL.path
         let fileName = fileURL.deletingPathExtension().lastPathComponent
-        
         fileNameAttribute = fileName
         filePathAttribute = filePath
         fileExtensionAttribute = fileextension
@@ -505,27 +532,21 @@ extension URL {
         }
         return nil
     }
-
     var fileSize: UInt64 {
         return attributes?[.size] as? UInt64 ?? UInt64(0)
     }
-
     var fileSizeString: String {
         return ByteCountFormatter.string(fromByteCount: Int64(fileSize), countStyle: .file)
     }
-
     var creationDate: Date? {
         return attributes?[.creationDate] as? Date
     }
-    
     var fileType: String {
         return attributes?[.type] as? String ?? ""
     }
-    
     var modificationDate: Date? {
         return attributes?[.modificationDate] as? Date
     }
-    
     var fileOwner: String {
         return attributes?[.ownerAccountName] as? String ?? ""
     }

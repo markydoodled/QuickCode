@@ -10,31 +10,774 @@ import CodeMirror_SwiftUI
 
 struct SettingsView: View {
     //Track Tab Selection
-    @State var tabSelection = 1
+    @State private var tabSelection = 1
     //Trigger Open URL Link
     @Environment(\.openURL) var openURL
+    //Store Selected Syntax Highlighting And Editor Theme In User Defaults
+    @AppStorage("selectedSyntax") var selectedSyntax = 51
+    @AppStorage("selectedTheme") var selectedTheme = 80
+    @AppStorage("syntax") var syntax: CodeMode = CodeMode.text
+    @AppStorage("theme") var theme: CodeViewTheme = CodeViewTheme.zenburnesque
+    //Store Editor Settings In User Defaults
+    @AppStorage("lineWrapping") var lineWrapping = true
+    @AppStorage("showInvisibleCharacters") var showInvisibleCharacters = false
+    @AppStorage("fontSize") var fontSize = 12
     var body: some View {
         //Set Tab View Between Settings Pages
         TabView(selection: $tabSelection) {
-            EditorSettings()
+            editorAndThemeSettings
                 .tabItem {
                     Image(systemName: "pencil")
                     Text("Editor")
                 }
                 .tag(1)
-            ThemeSettings()
-                .tabItem {
-                    Image(systemName: "moon")
-                    Text("Themes")
-                }
-                .tag(2)
             misc
                 .tabItem {
                     Image(systemName: "ellipsis.circle")
                     Text("Misc")
                 }
-                .tag(3)
+                .tag(2)
         }
+    }
+    //Editor Settings Page
+    var editorAndThemeSettings: some View {
+        Form {
+            //Change Font Size, Toggle Line Wrapping And Toggle Invisible Characters
+            VStack {
+                Stepper("Font Size - \(fontSize)", value: $fontSize, in: 1...120)
+                Toggle(isOn: $lineWrapping) {
+                    Text("Line Wrapping")
+                }
+                .toggleStyle(.switch)
+                Toggle(isOn: $showInvisibleCharacters) {
+                    Text("Show Invisible Characters")
+                }
+                .toggleStyle(.switch)
+                //Theme Picker
+                Picker(selection: $selectedTheme, label: Text("Theme")) {
+                    Group {
+                        Group {
+                            Button("BB Edit") {}
+                                .tag(1)
+                            Button("All Hallow Eve") {}
+                                .tag(2)
+                            Button("Idle Fingers") {}
+                                .tag(3)
+                            Button("Space Cadet") {}
+                                .tag(4)
+                            Button("Idle") {}
+                                .tag(5)
+                            Button("Oceanic") {}
+                                .tag(6)
+                            Button("Clouds") {}
+                                .tag(7)
+                            Button("GitHub") {}
+                                .tag(8)
+                            Button("Ryan Light") {}
+                                .tag(9)
+                            Button("Black Pearl") {}
+                                .tag(10)
+                        }
+                        Group {
+                            Button("Mono Industrial") {}
+                                .tag(11)
+                            Button("Happy Happy Joy Joy 2") {}
+                                .tag(12)
+                            Button("Cube 2 Media") {}
+                                .tag(13)
+                            Button("Friendship Bracelet") {}
+                                .tag(14)
+                            Button("Classic Modififed") {}
+                                .tag(15)
+                            Button("Amy") {}
+                                .tag(16)
+                            Button("Demo") {}
+                                .tag(17)
+                            Button("R Dark") {}
+                                .tag(18)
+                            Button("Espresso") {}
+                                .tag(19)
+                            Button("Sunburst") {}
+                                .tag(20)
+                        }
+                        Group {
+                            Button("Made Of Code") {}
+                                .tag(21)
+                            Button("Arona") {}
+                                .tag(22)
+                            Button("Putty") {}
+                                .tag(23)
+                            Button("Night Lion") {}
+                                .tag(24)
+                            Button("Sidewalk Chalk") {}
+                                .tag(25)
+                            Button("Swyphs II") {}
+                                .tag(26)
+                            Button("I Plastic") {}
+                                .tag(27)
+                            Button("Solarized (Light)") {}
+                                .tag(28)
+                            Button("Mac Classic") {}
+                                .tag(29)
+                            Button("Pastels On Dark") {}
+                                .tag(30)
+                        }
+                        Group {
+                            Button("IR Black") {}
+                                .tag(31)
+                            Button("Material") {}
+                                .tag(32)
+                            Button("Monokai Fannon Edition") {}
+                                .tag(33)
+                            Button("Monokai Bright") {}
+                                .tag(34)
+                            Button("Eiffel") {}
+                                .tag(35)
+                            Button("Base 16 Light") {}
+                                .tag(36)
+                            Button("Oceanic Muted") {}
+                                .tag(37)
+                            Button("Summer Fruit") {}
+                                .tag(38)
+                            Button("Espresso Libre") {}
+                                .tag(39)
+                            Button("KR Theme") {}
+                                .tag(40)
+                        }
+                        Group {
+                            Button("Mreq") {}
+                                .tag(41)
+                            Button("Chanfle") {}
+                                .tag(42)
+                            Button("Venom") {}
+                                .tag(43)
+                            Button("Juicy") {}
+                                .tag(44)
+                            Button("Coda") {}
+                                .tag(45)
+                            Button("Fluid Vision") {}
+                                .tag(46)
+                            Button("Tomorrow Night Blue") {}
+                                .tag(47)
+                            Button("Migucwb (Amiga)") {}
+                                .tag(48)
+                            Button("Twilight") {}
+                                .tag(49)
+                            Button("Vibrant Ink") {}
+                                .tag(50)
+                        }
+                        Group {
+                            Button("Summer Sun") {}
+                                .tag(51)
+                            Button("Monokai") {}
+                                .tag(52)
+                            Button("Rails Envy") {}
+                                .tag(53)
+                            Button("Merbivore") {}
+                                .tag(54)
+                            Button("Dracula") {}
+                                .tag(55)
+                            Button("Pastie") {}
+                                .tag(56)
+                            Button("Low Light") {}
+                                .tag(57)
+                            Button("Spectacular") {}
+                                .tag(58)
+                            Button("Smoothy") {}
+                                .tag(59)
+                            Button("Vibrant Fin") {}
+                                .tag(60)
+                        }
+                        Group {
+                            Button("Blackboard") {}
+                                .tag(61)
+                            Button("Slush & Poppies") {}
+                                .tag(62)
+                            Button("Freckle") {}
+                                .tag(63)
+                            Button("Fantasy Script") {}
+                                .tag(64)
+                            Button("Tomorrow Night Eighties") {}
+                                .tag(65)
+                            Button("Rhuk") {}
+                                .tag(66)
+                            Button("Toy Chest") {}
+                                .tag(67)
+                            Button("Fake") {}
+                                .tag(68)
+                            Button("Emacs Strict") {}
+                                .tag(69)
+                            Button("Merbivore Soft") {}
+                                .tag(70)
+                        }
+                        Group {
+                            Button("Fade To Grey") {}
+                                .tag(71)
+                            Button("Monokai Sublime") {}
+                                .tag(72)
+                            Button("Johnny") {}
+                                .tag(73)
+                            Button("Railscasts") {}
+                                .tag(74)
+                            Button("Argonaut") {}
+                                .tag(75)
+                            Button("Tomorrow Night Bright") {}
+                                .tag(76)
+                            Button("Lazy") {}
+                                .tag(77)
+                            Button("Tomorrow Night") {}
+                                .tag(78)
+                            Button("Bongzilla") {}
+                                .tag(79)
+                            Button("Zenburnesque") {}
+                                .tag(80)
+                        }
+                        Group {
+                            Button("Notebook") {}
+                                .tag(81)
+                            Button("Django (Smoothy)") {}
+                                .tag(82)
+                            Button("Blackboard Black") {}
+                                .tag(83)
+                            Button("Black Pearl II") {}
+                                .tag(84)
+                            Button("Kuroir") {}
+                                .tag(85)
+                            Button("Cobalt") {}
+                                .tag(86)
+                            Button("Ayu-Mirage") {}
+                                .tag(87)
+                            Button("Chrome DevTools") {}
+                                .tag(88)
+                            Button("Prospettiva") {}
+                                .tag(89)
+                            Button("Espresso Soda") {}
+                                .tag(90)
+                        }
+                        Group {
+                            Button("Birds Of Paradise") {}
+                                .tag(91)
+                            Button("Text Ex Machina") {}
+                                .tag(92)
+                            Button("Django") {}
+                                .tag(93)
+                            Button("Tomorrow") {}
+                                .tag(94)
+                            Button("Solarized (Dark)") {}
+                                .tag(95)
+                            Button("Plastic Code Wrap") {}
+                                .tag(96)
+                            Button("Material Palenight") {}
+                                .tag(97)
+                            Button("Bespin") {}
+                                .tag(98)
+                            Button("Espresso Tutti") {}
+                                .tag(99)
+                            Button("Vibrant Tango") {}
+                                .tag(100)
+                        }
+                    }
+                    Group {
+                        Button("Tubster") {}
+                            .tag(101)
+                        Button("Dark Pastel") {}
+                            .tag(102)
+                        Button("Dawn") {}
+                            .tag(103)
+                        Button("Tango") {}
+                            .tag(104)
+                        Button("Clouds Midnight") {}
+                            .tag(105)
+                        Button("Glitterbomb") {}
+                            .tag(106)
+                        Button("IR White") {}
+                            .tag(107)
+                    }
+                }
+                .pickerStyle(.menu)
+                //Check For Theme Changes
+                .onChange(of: selectedTheme) {
+                    if selectedTheme == 1 {
+                        theme = CodeViewTheme.bbedit
+                    } else if selectedTheme == 2 {
+                        theme = CodeViewTheme.allHallowEve
+                    } else if selectedTheme == 3 {
+                        theme = CodeViewTheme.idleFingers
+                    } else if selectedTheme == 4 {
+                        theme = CodeViewTheme.spaceCadet
+                    } else if selectedTheme == 5 {
+                        theme = CodeViewTheme.idle
+                    } else if selectedTheme == 6 {
+                        theme = CodeViewTheme.oceanic
+                    } else if selectedTheme == 7 {
+                        theme = CodeViewTheme.clouds
+                    } else if selectedTheme == 8 {
+                        theme = CodeViewTheme.github
+                    } else if selectedTheme == 9 {
+                        theme = CodeViewTheme.ryanLight
+                    } else if selectedTheme == 10 {
+                        theme = CodeViewTheme.blackPearl
+                    } else if selectedTheme == 11 {
+                        theme = CodeViewTheme.monoIndustrial
+                    } else if selectedTheme == 12 {
+                        theme = CodeViewTheme.happyHappyJoyJoy2
+                    } else if selectedTheme == 13 {
+                        theme = CodeViewTheme.cube2Media
+                    } else if selectedTheme == 14 {
+                        theme = CodeViewTheme.friendshipBracelet
+                    } else if selectedTheme == 15 {
+                        theme = CodeViewTheme.classicModified
+                    } else if selectedTheme == 16 {
+                        theme = CodeViewTheme.amy
+                    } else if selectedTheme == 17 {
+                        theme = CodeViewTheme.default
+                    } else if selectedTheme == 18 {
+                        theme = CodeViewTheme.rdrak
+                    } else if selectedTheme == 19 {
+                        theme = CodeViewTheme.espresso
+                    } else if selectedTheme == 20 {
+                        theme = CodeViewTheme.sunburst
+                    } else if selectedTheme == 21 {
+                        theme = CodeViewTheme.madeOfCode
+                    } else if selectedTheme == 22 {
+                        theme = CodeViewTheme.arona
+                    } else if selectedTheme == 23 {
+                        theme = CodeViewTheme.putty
+                    } else if selectedTheme == 24 {
+                        theme = CodeViewTheme.nightlion
+                    } else if selectedTheme == 25 {
+                        theme = CodeViewTheme.sidewalkchalk
+                    } else if selectedTheme == 26 {
+                        theme = CodeViewTheme.swyphsii
+                    } else if selectedTheme == 27 {
+                        theme = CodeViewTheme.iplastic
+                    } else if selectedTheme == 28 {
+                        theme = CodeViewTheme.solarizedLight
+                    } else if selectedTheme == 29 {
+                        theme = CodeViewTheme.macClassic
+                    } else if selectedTheme == 30 {
+                        theme = CodeViewTheme.pastelsOnDark
+                    } else if selectedTheme == 31 {
+                        theme = CodeViewTheme.irBlack
+                    } else if selectedTheme == 32 {
+                        theme = CodeViewTheme.material
+                    } else if selectedTheme == 33 {
+                        theme = CodeViewTheme.monokaiFannonedition
+                    } else if selectedTheme == 34 {
+                        theme = CodeViewTheme.monokaiBright
+                    } else if selectedTheme == 35 {
+                        theme = CodeViewTheme.eiffel
+                    } else if selectedTheme == 36 {
+                        theme = CodeViewTheme.base16Light
+                    } else if selectedTheme == 37 {
+                        theme = CodeViewTheme.oceanicMuted
+                    } else if selectedTheme == 38 {
+                        theme = CodeViewTheme.summerfruit
+                    } else if selectedTheme == 39 {
+                        theme = CodeViewTheme.espressoLibre
+                    } else if selectedTheme == 40 {
+                        theme = CodeViewTheme.krtheme
+                    } else if selectedTheme == 41 {
+                        theme = CodeViewTheme.mreq
+                    } else if selectedTheme == 42 {
+                        theme = CodeViewTheme.chanfle
+                    } else if selectedTheme == 43 {
+                        theme = CodeViewTheme.venom
+                    } else if selectedTheme == 44 {
+                        theme = CodeViewTheme.juicy
+                    } else if selectedTheme == 45 {
+                        theme = CodeViewTheme.coda
+                    } else if selectedTheme == 46 {
+                        theme = CodeViewTheme.fluidvision
+                    } else if selectedTheme == 47 {
+                        theme = CodeViewTheme.tomorrowNightBlue
+                    } else if selectedTheme == 48 {
+                        theme = CodeViewTheme.magicwbAmiga
+                    } else if selectedTheme == 49 {
+                        theme = CodeViewTheme.twilight
+                    } else if selectedTheme == 50 {
+                        theme = CodeViewTheme.vibrantInk
+                    } else if selectedTheme == 51 {
+                        theme = CodeViewTheme.summerSun
+                    } else if selectedTheme == 52 {
+                        theme = CodeViewTheme.monokai
+                    } else if selectedTheme == 53 {
+                        theme = CodeViewTheme.railsEnvy
+                    } else if selectedTheme == 54 {
+                        theme = CodeViewTheme.merbivore
+                    } else if selectedTheme == 55 {
+                        theme = CodeViewTheme.dracula
+                    } else if selectedTheme == 56 {
+                        theme = CodeViewTheme.pastie
+                    } else if selectedTheme == 57 {
+                        theme = CodeViewTheme.lowlight
+                    } else if selectedTheme == 58 {
+                        theme = CodeViewTheme.spectacular
+                    } else if selectedTheme == 59 {
+                        theme = CodeViewTheme.smoothy
+                    } else if selectedTheme == 60 {
+                        theme = CodeViewTheme.vibrantFin
+                    } else if selectedTheme == 61 {
+                        theme = CodeViewTheme.blackboard
+                    } else if selectedTheme == 62 {
+                        theme = CodeViewTheme.slushPoppies
+                    } else if selectedTheme == 63 {
+                        theme = CodeViewTheme.freckle
+                    } else if selectedTheme == 64 {
+                        theme = CodeViewTheme.fantasyscript
+                    } else if selectedTheme == 65 {
+                        theme = CodeViewTheme.tomorrowNightEighties
+                    } else if selectedTheme == 66 {
+                        theme = CodeViewTheme.rhuk
+                    } else if selectedTheme == 67 {
+                        theme = CodeViewTheme.toyChest
+                    } else if selectedTheme == 68 {
+                        theme = CodeViewTheme.fake
+                    } else if selectedTheme == 69 {
+                        theme = CodeViewTheme.emacsStrict
+                    } else if selectedTheme == 70 {
+                        theme = CodeViewTheme.merbivoreSoft
+                    } else if selectedTheme == 71 {
+                        theme = CodeViewTheme.fadeToGrey
+                    } else if selectedTheme == 72 {
+                        theme = CodeViewTheme.monokaiSublime
+                    } else if selectedTheme == 73 {
+                        theme = CodeViewTheme.johnny
+                    } else if selectedTheme == 74 {
+                        theme = CodeViewTheme.railscasts
+                    } else if selectedTheme == 75 {
+                        theme = CodeViewTheme.argonaut
+                    } else if selectedTheme == 76 {
+                        theme = CodeViewTheme.tomorrowNightBright
+                    } else if selectedTheme == 77 {
+                        theme = CodeViewTheme.lazy
+                    } else if selectedTheme == 78 {
+                        theme = CodeViewTheme.tomorrowNight
+                    } else if selectedTheme == 79 {
+                        theme = CodeViewTheme.bongzilla
+                    } else if selectedTheme == 80 {
+                        theme = CodeViewTheme.zenburnesque
+                    } else if selectedTheme == 81 {
+                        theme = CodeViewTheme.notebook
+                    } else if selectedTheme == 82 {
+                        theme = CodeViewTheme.djangoSmoothy
+                    } else if selectedTheme == 83 {
+                        theme = CodeViewTheme.blackboardBlack
+                    } else if selectedTheme == 84 {
+                        theme = CodeViewTheme.blackPearlii
+                    } else if selectedTheme == 85 {
+                        theme = CodeViewTheme.kuroir
+                    } else if selectedTheme == 86 {
+                        theme = CodeViewTheme.cobalt
+                    } else if selectedTheme == 87 {
+                        theme = CodeViewTheme.ayuMirage
+                    } else if selectedTheme == 88 {
+                        theme = CodeViewTheme.chromeDevtools
+                    } else if selectedTheme == 89 {
+                        theme = CodeViewTheme.prospettiva
+                    } else if selectedTheme == 90 {
+                        theme = CodeViewTheme.espressoSoda
+                    } else if selectedTheme == 91 {
+                        theme = CodeViewTheme.birdsOfParadise
+                    } else if selectedTheme == 92 {
+                        theme = CodeViewTheme.textExMachina
+                    } else if selectedTheme == 93 {
+                        theme = CodeViewTheme.django
+                    } else if selectedTheme == 94 {
+                        theme = CodeViewTheme.tomorrow
+                    } else if selectedTheme == 95 {
+                        theme = CodeViewTheme.solarizedDark
+                    } else if selectedTheme == 96 {
+                        theme = CodeViewTheme.plasticcodewrap
+                    } else if selectedTheme == 97 {
+                        theme = CodeViewTheme.materialPalenight
+                    } else if selectedTheme == 98 {
+                        theme = CodeViewTheme.bespin
+                    } else if selectedTheme == 99 {
+                        theme = CodeViewTheme.espressoTutti
+                    } else if selectedTheme == 100 {
+                        theme = CodeViewTheme.vibrantTango
+                    } else if selectedTheme == 101 {
+                        theme = CodeViewTheme.tubster
+                    } else if selectedTheme == 102 {
+                        theme = CodeViewTheme.darkpastel
+                    } else if selectedTheme == 103 {
+                        theme = CodeViewTheme.dawn
+                    } else if selectedTheme == 104 {
+                        theme = CodeViewTheme.tango
+                    } else if selectedTheme == 105 {
+                        theme = CodeViewTheme.cloudsMidnight
+                    } else if selectedTheme == 106 {
+                        theme = CodeViewTheme.glitterbomb
+                    } else if selectedTheme == 107 {
+                        theme = CodeViewTheme.irWhite
+                    }
+                }
+                //Syntax Picker
+                Picker(selection: $selectedSyntax, label: Text("Syntax")) {
+                    Group {
+                        Button("APL") {}
+                            .tag(1)
+                        Button("PGP") {}
+                            .tag(2)
+                        Button("ASN") {}
+                            .tag(3)
+                        Button("C Make") {}
+                            .tag(4)
+                        Button("C") {}
+                            .tag(5)
+                        Button("C++") {}
+                            .tag(6)
+                        Button("Objective C") {}
+                            .tag(7)
+                        Button("Kotlin") {}
+                            .tag(8)
+                        Button("Scala") {}
+                            .tag(9)
+                        Button("C#") {}
+                            .tag(10)
+                    }
+                    Group {
+                        Button("Java") {}
+                            .tag(11)
+                        Button("Cobol") {}
+                            .tag(12)
+                        Button("Coffee Script") {}
+                            .tag(13)
+                        Button("Lisp") {}
+                            .tag(14)
+                        Button("CSS") {}
+                            .tag(15)
+                        Button("Django") {}
+                            .tag(16)
+                        Button("Docker File") {}
+                            .tag(17)
+                        Button("ERLang") {}
+                            .tag(18)
+                        Button("Fortran") {}
+                            .tag(19)
+                        Button("Go") {}
+                            .tag(20)
+                    }
+                    Group {
+                        Button("Groovy") {}
+                            .tag(21)
+                        Button("Haskell") {}
+                            .tag(22)
+                        Button("HTML") {}
+                            .tag(23)
+                        Button("HTTP") {}
+                            .tag(24)
+                        Button("Javascript") {}
+                            .tag(25)
+                        Button("Typescript") {}
+                            .tag(26)
+                        Button("JSON") {}
+                            .tag(27)
+                        Button("Ecma") {}
+                            .tag(28)
+                        Button("Jinja") {}
+                            .tag(29)
+                        Button("Lua") {}
+                            .tag(30)
+                    }
+                    Group {
+                        Button("Markdown") {}
+                            .tag(31)
+                        Button("Maths") {}
+                            .tag(32)
+                        Button("Pascal") {}
+                            .tag(33)
+                        Button("Perl") {}
+                            .tag(34)
+                        Button("PHP") {}
+                            .tag(35)
+                        Button("Powershell") {}
+                            .tag(36)
+                        Button("Properties") {}
+                            .tag(37)
+                        Button("Protobuf") {}
+                            .tag(38)
+                        Button("Python") {}
+                            .tag(39)
+                        Button("R") {}
+                            .tag(40)
+                    }
+                    Group {
+                        Button("Ruby") {}
+                            .tag(41)
+                        Button("Rust") {}
+                            .tag(42)
+                        Button("Sass") {}
+                            .tag(43)
+                        Button("Scheme") {}
+                            .tag(44)
+                        Button("Shell") {}
+                            .tag(45)
+                        Button("SQL") {}
+                            .tag(46)
+                        Button("SQLite") {}
+                            .tag(47)
+                        Button("MySQL") {}
+                            .tag(48)
+                        Button("Latex") {}
+                            .tag(49)
+                        Button("Swift") {}
+                            .tag(50)
+                    }
+                    Group {
+                        Button("Text") {}
+                            .tag(51)
+                        Button("Toml") {}
+                            .tag(52)
+                        Button("VB") {}
+                            .tag(53)
+                        Button("Vue") {}
+                            .tag(54)
+                        Button("XML") {}
+                            .tag(55)
+                        Button("YAML") {}
+                            .tag(56)
+                        Button("Dart") {}
+                            .tag(57)
+                        Button("Ntriples") {}
+                            .tag(58)
+                        Button("Sparql") {}
+                            .tag(59)
+                        Button("Turtle") {}
+                            .tag(60)
+                    }
+                }
+                .pickerStyle(.menu)
+                //Check For Syntax Changes
+                .onChange(of: selectedSyntax) {
+                    if selectedSyntax == 1 {
+                        syntax = CodeMode.apl
+                    } else if selectedSyntax == 2 {
+                        syntax = CodeMode.pgp
+                    } else if selectedSyntax == 3 {
+                        syntax = CodeMode.asn
+                    } else if selectedSyntax == 4 {
+                        syntax = CodeMode.cmake
+                    } else if selectedSyntax == 5 {
+                        syntax = CodeMode.c
+                    } else if selectedSyntax == 6 {
+                        syntax = CodeMode.cplus
+                    } else if selectedSyntax == 7 {
+                        syntax = CodeMode.objc
+                    } else if selectedSyntax == 8 {
+                        syntax = CodeMode.kotlin
+                    } else if selectedSyntax == 9 {
+                        syntax = CodeMode.scala
+                    } else if selectedSyntax == 10 {
+                        syntax = CodeMode.csharp
+                    } else if selectedSyntax == 11 {
+                        syntax = CodeMode.java
+                    } else if selectedSyntax == 12 {
+                        syntax = CodeMode.cobol
+                    } else if selectedSyntax == 13 {
+                        syntax = CodeMode.coffeescript
+                    } else if selectedSyntax == 14 {
+                        syntax = CodeMode.lisp
+                    } else if selectedSyntax == 15 {
+                        syntax = CodeMode.css
+                    } else if selectedSyntax == 16 {
+                        syntax = CodeMode.django
+                    } else if selectedSyntax == 17 {
+                        syntax = CodeMode.dockerfile
+                    } else if selectedSyntax == 18 {
+                        syntax = CodeMode.erlang
+                    } else if selectedSyntax == 19 {
+                        syntax = CodeMode.fortran
+                    } else if selectedSyntax == 20 {
+                        syntax = CodeMode.go
+                    } else if selectedSyntax == 21 {
+                        syntax = CodeMode.groovy
+                    } else if selectedSyntax == 22 {
+                        syntax = CodeMode.haskell
+                    } else if selectedSyntax == 23 {
+                        syntax = CodeMode.html
+                    } else if selectedSyntax == 24 {
+                        syntax = CodeMode.http
+                    } else if selectedSyntax == 25 {
+                        syntax = CodeMode.javascript
+                    } else if selectedSyntax == 26 {
+                        syntax = CodeMode.typescript
+                    } else if selectedSyntax == 27 {
+                        syntax = CodeMode.json
+                    } else if selectedSyntax == 28 {
+                        syntax = CodeMode.ecma
+                    } else if selectedSyntax == 29 {
+                        syntax = CodeMode.jinja
+                    } else if selectedSyntax == 30 {
+                        syntax = CodeMode.lua
+                    } else if selectedSyntax == 31 {
+                        syntax = CodeMode.markdown
+                    } else if selectedSyntax == 32 {
+                        syntax = CodeMode.maths
+                    } else if selectedSyntax == 33 {
+                        syntax = CodeMode.pascal
+                    } else if selectedSyntax == 34 {
+                        syntax = CodeMode.perl
+                    } else if selectedSyntax == 35 {
+                        syntax = CodeMode.php
+                    } else if selectedSyntax == 36 {
+                        syntax = CodeMode.powershell
+                    } else if selectedSyntax == 37 {
+                        syntax = CodeMode.properties
+                    } else if selectedSyntax == 38 {
+                        syntax = CodeMode.protobuf
+                    } else if selectedSyntax == 39 {
+                        syntax = CodeMode.python
+                    } else if selectedSyntax == 40 {
+                        syntax = CodeMode.r
+                    } else if selectedSyntax == 41 {
+                        syntax = CodeMode.ruby
+                    } else if selectedSyntax == 42 {
+                        syntax = CodeMode.rust
+                    } else if selectedSyntax == 43 {
+                        syntax = CodeMode.sass
+                    } else if selectedSyntax == 44 {
+                        syntax = CodeMode.scheme
+                    } else if selectedSyntax == 45 {
+                        syntax = CodeMode.shell
+                    } else if selectedSyntax == 46 {
+                        syntax = CodeMode.sql
+                    } else if selectedSyntax == 47 {
+                        syntax = CodeMode.sqllite
+                    } else if selectedSyntax == 48 {
+                        syntax = CodeMode.mysql
+                    } else if selectedSyntax == 49 {
+                        syntax = CodeMode.latex
+                    } else if selectedSyntax == 50 {
+                        syntax = CodeMode.swift
+                    } else if selectedSyntax == 51 {
+                        syntax = CodeMode.text
+                    } else if selectedSyntax == 52 {
+                        syntax = CodeMode.toml
+                    } else if selectedSyntax == 53 {
+                        syntax = CodeMode.vb
+                    } else if selectedSyntax == 54 {
+                        syntax = CodeMode.vue
+                    } else if selectedSyntax == 55 {
+                        syntax = CodeMode.xml
+                    } else if selectedSyntax == 56 {
+                        syntax = CodeMode.yaml
+                    } else if selectedSyntax == 57 {
+                        syntax = CodeMode.dart
+                    } else if selectedSyntax == 58 {
+                        syntax = CodeMode.ntriples
+                    } else if selectedSyntax == 59 {
+                        syntax = CodeMode.sparql
+                    } else if selectedSyntax == 60 {
+                        syntax = CodeMode.turtle
+                    }
+                }
+                //Testing View
+                CodeView(theme: theme, code: .constant("Hello World"), mode: syntax.mode(), fontSize: fontSize, showInvisibleCharacters: showInvisibleCharacters, lineWrapping: lineWrapping)
+            }
+        }
+        .padding(.all)
     }
     //Misc Settings Page
     var misc: some View {
@@ -44,1305 +787,32 @@ struct SettingsView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Text("Version - \(Text("1.0").bold())")
+                        Text("Version - \(Text("1.1").bold())")
                         Spacer()
                     }
                     HStack {
                         Spacer()
-                        Text("Build - \(Text("4").bold())")
+                        Text("Build - \(Text("9").bold())")
                         Spacer()
                     }
                 }
             }
             //App Feedback Button
-            GroupBox(label: Label("Feedback", systemImage: "questionmark.bubble")) {
-                VStack {
-                    HStack {
-                        Spacer()
-                        Button(action: {SendEmail.send()}) {
-                            Text("Send Feedback...")
-                        }
-                        Spacer()
-                    }
-                    HStack {
-                        Spacer()
-                        Button(action: {openURL(URL(string: "https://github.com/markydoodled/QuickCode")!)}) {
-                            Text("GitHub Repository")
-                        }
-                        Spacer()
-                    }
-                    HStack {
-                        Spacer()
-                        Button(action: {openURL(URL(string: "http://markydoodled.github.io/portfolio/")!)}) {
-                            Text("Portfolio")
-                        }
-                        Spacer()
-                    }
-                }
-            }
-        }
-        .padding(.all)
-    }
-}
-
-struct ThemeSettings: View {
-    //Store Selected Syntax Highlighting And Editor Theme In User Defaults
-    @AppStorage("selectedSyntax") var selectedSyntax = 51
-    @AppStorage("selectedTheme") var selectedTheme = 80
-    @AppStorage("syntax") var syntax: CodeMode = CodeMode.text
-    @AppStorage("theme") var theme: CodeViewTheme = CodeViewTheme.zenburnesque
-    var body: some View {
-        Form {
-            //Testing View
-            CodeView(theme: theme, code: .constant("Hello World"), mode: syntax.mode(), fontSize: 12, showInvisibleCharacters: false, lineWrapping: false)
-                .padding(.bottom)
-            //Theme Picker
-            Picker(selection: $selectedTheme, label: Text("Theme")) {
-                Group {
-                    Group {
-                        Button(action: {}) {
-                            Text("BB Edit")
-                        }
-                        .tag(1)
-                        Button(action: {}) {
-                            Text("All Hallow Eve")
-                        }
-                        .tag(2)
-                        Button(action: {}) {
-                            Text("Idle Fingers")
-                        }
-                        .tag(3)
-                        Button(action: {}) {
-                            Text("Space Cadet")
-                        }
-                        .tag(4)
-                        Button(action: {}) {
-                            Text("Idle")
-                        }
-                        .tag(5)
-                        Button(action: {}) {
-                            Text("Oceanic")
-                        }
-                        .tag(6)
-                        Button(action: {}) {
-                            Text("Clouds")
-                        }
-                        .tag(7)
-                        Button(action: {}) {
-                            Text("GitHub")
-                        }
-                        .tag(8)
-                        Button(action: {}) {
-                            Text("Ryan Light")
-                        }
-                        .tag(9)
-                        Button(action: {}) {
-                            Text("Black Pearl")
-                        }
-                        .tag(10)
-                    }
-                    Group {
-                        Button(action: {}) {
-                            Text("Mono Industrial")
-                        }
-                        .tag(11)
-                        Button(action: {}) {
-                            Text("Happy Happy Joy Joy 2")
-                        }
-                        .tag(12)
-                        Button(action: {}) {
-                            Text("Cube 2 Media")
-                        }
-                        .tag(13)
-                        Button(action: {}) {
-                            Text("Friendship Bracelet")
-                        }
-                        .tag(14)
-                        Button(action: {}) {
-                            Text("Classic Modififed")
-                        }
-                        .tag(15)
-                        Button(action: {}) {
-                            Text("Amy")
-                        }
-                        .tag(16)
-                        Button(action: {}) {
-                            Text("Demo")
-                        }
-                        .tag(17)
-                        Button(action: {}) {
-                            Text("R Dark")
-                        }
-                        .tag(18)
-                        Button(action: {}) {
-                            Text("Espresso")
-                        }
-                        .tag(19)
-                        Button(action: {}) {
-                            Text("Sunburst")
-                        }
-                        .tag(20)
-                    }
-                    Group {
-                        Button(action: {}) {
-                            Text("Made Of Code")
-                        }
-                        .tag(21)
-                        Button(action: {}) {
-                            Text("Arona")
-                        }
-                        .tag(22)
-                        Button(action: {}) {
-                            Text("Putty")
-                        }
-                        .tag(23)
-                        Button(action: {}) {
-                            Text("Night Lion")
-                        }
-                        .tag(24)
-                        Button(action: {}) {
-                            Text("Sidewalk Chalk")
-                        }
-                        .tag(25)
-                        Button(action: {}) {
-                            Text("Swyphs II")
-                        }
-                        .tag(26)
-                        Button(action: {}) {
-                            Text("I Plastic")
-                        }
-                        .tag(27)
-                        Button(action: {}) {
-                            Text("Solarized (Light)")
-                        }
-                        .tag(28)
-                        Button(action: {}) {
-                            Text("Mac Classic")
-                        }
-                        .tag(29)
-                        Button(action: {}) {
-                            Text("Pastels On Dark")
-                        }
-                        .tag(30)
-                    }
-                    Group {
-                        Button(action: {}) {
-                            Text("IR Black")
-                        }
-                        .tag(31)
-                        Button(action: {}) {
-                            Text("Material")
-                        }
-                        .tag(32)
-                        Button(action: {}) {
-                            Text("Monokai Fannon Edition")
-                        }
-                        .tag(33)
-                        Button(action: {}) {
-                            Text("Monokai Bright")
-                        }
-                        .tag(34)
-                        Button(action: {}) {
-                            Text("Eiffel")
-                        }
-                        .tag(35)
-                        Button(action: {}) {
-                            Text("Base 16 Light")
-                        }
-                        .tag(36)
-                        Button(action: {}) {
-                            Text("Oceanic Muted")
-                        }
-                        .tag(37)
-                        Button(action: {}) {
-                            Text("Summer Fruit")
-                        }
-                        .tag(38)
-                        Button(action: {}) {
-                            Text("Espresso Libre")
-                        }
-                        .tag(39)
-                        Button(action: {}) {
-                            Text("KR Theme")
-                        }
-                        .tag(40)
-                    }
-                    Group {
-                        Button(action: {}) {
-                            Text("Mreq")
-                        }
-                        .tag(41)
-                        Button(action: {}) {
-                            Text("Chanfle")
-                        }
-                        .tag(42)
-                        Button(action: {}) {
-                            Text("Venom")
-                        }
-                        .tag(43)
-                        Button(action: {}) {
-                            Text("Juicy")
-                        }
-                        .tag(44)
-                        Button(action: {}) {
-                            Text("Coda")
-                        }
-                        .tag(45)
-                        Button(action: {}) {
-                            Text("Fluid Vision")
-                        }
-                        .tag(46)
-                        Button(action: {}) {
-                            Text("Tomorrow Night Blue")
-                        }
-                        .tag(47)
-                        Button(action: {}) {
-                            Text("Migucwb (Amiga)")
-                        }
-                        .tag(48)
-                        Button(action: {}) {
-                            Text("Twilight")
-                        }
-                        .tag(49)
-                        Button(action: {}) {
-                            Text("Vibrant Ink")
-                        }
-                        .tag(50)
-                    }
-                    Group {
-                        Button(action: {}) {
-                            Text("Summer Sun")
-                        }
-                        .tag(51)
-                        Button(action: {}) {
-                            Text("Monokai")
-                        }
-                        .tag(52)
-                        Button(action: {}) {
-                            Text("Rails Envy")
-                        }
-                        .tag(53)
-                        Button(action: {}) {
-                            Text("Merbivore")
-                        }
-                        .tag(54)
-                        Button(action: {}) {
-                            Text("Dracula")
-                        }
-                        .tag(55)
-                        Button(action: {}) {
-                            Text("Pastie")
-                        }
-                        .tag(56)
-                        Button(action: {}) {
-                            Text("Low Light")
-                        }
-                        .tag(57)
-                        Button(action: {}) {
-                            Text("Spectacular")
-                        }
-                        .tag(58)
-                        Button(action: {}) {
-                            Text("Smoothy")
-                        }
-                        .tag(59)
-                        Button(action: {}) {
-                            Text("Vibrant Fin")
-                        }
-                        .tag(60)
-                    }
-                    Group {
-                        Button(action: {}) {
-                            Text("Blackboard")
-                        }
-                        .tag(61)
-                        Button(action: {}) {
-                            Text("Slush & Poppies")
-                        }
-                        .tag(62)
-                        Button(action: {}) {
-                            Text("Freckle")
-                        }
-                        .tag(63)
-                        Button(action: {}) {
-                            Text("Fantasy Script")
-                        }
-                        .tag(64)
-                        Button(action: {}) {
-                            Text("Tomorrow Night Eighties")
-                        }
-                        .tag(65)
-                        Button(action: {}) {
-                            Text("Rhuk")
-                        }
-                        .tag(66)
-                        Button(action: {}) {
-                            Text("Toy Chest")
-                        }
-                        .tag(67)
-                        Button(action: {}) {
-                            Text("Fake")
-                        }
-                        .tag(68)
-                        Button(action: {}) {
-                            Text("Emacs Strict")
-                        }
-                        .tag(69)
-                        Button(action: {}) {
-                            Text("Merbivore Soft")
-                        }
-                        .tag(70)
-                    }
-                    Group {
-                        Button(action: {}) {
-                            Text("Fade To Grey")
-                        }
-                        .tag(71)
-                        Button(action: {}) {
-                            Text("Monokai Sublime")
-                        }
-                        .tag(72)
-                        Button(action: {}) {
-                            Text("Johnny")
-                        }
-                        .tag(73)
-                        Button(action: {}) {
-                            Text("Railscasts")
-                        }
-                        .tag(74)
-                        Button(action: {}) {
-                            Text("Argonaut")
-                        }
-                        .tag(75)
-                        Button(action: {}) {
-                            Text("Tomorrow Night Bright")
-                        }
-                        .tag(76)
-                        Button(action: {}) {
-                            Text("Lazy")
-                        }
-                        .tag(77)
-                        Button(action: {}) {
-                            Text("Tomorrow Night")
-                        }
-                        .tag(78)
-                        Button(action: {}) {
-                            Text("Bongzilla")
-                        }
-                        .tag(79)
-                        Button(action: {}) {
-                            Text("Zenburnesque")
-                        }
-                        .tag(80)
-                    }
-                    Group {
-                        Button(action: {}) {
-                            Text("Notebook")
-                        }
-                        .tag(81)
-                        Button(action: {}) {
-                            Text("Django (Smoothy)")
-                        }
-                        .tag(82)
-                        Button(action: {}) {
-                            Text("Blackboard Black")
-                        }
-                        .tag(83)
-                        Button(action: {}) {
-                            Text("Black Pearl II")
-                        }
-                        .tag(84)
-                        Button(action: {}) {
-                            Text("Kuroir")
-                        }
-                        .tag(85)
-                        Button(action: {}) {
-                            Text("Cobalt")
-                        }
-                        .tag(86)
-                        Button(action: {}) {
-                            Text("Ayu-Mirage")
-                        }
-                        .tag(87)
-                        Button(action: {}) {
-                            Text("Chrome DevTools")
-                        }
-                        .tag(88)
-                        Button(action: {}) {
-                            Text("Prospettiva")
-                        }
-                        .tag(89)
-                        Button(action: {}) {
-                            Text("Espresso Soda")
-                        }
-                        .tag(90)
-                    }
-                    Group {
-                        Button(action: {}) {
-                            Text("Birds Of Paradise")
-                        }
-                        .tag(91)
-                        Button(action: {}) {
-                            Text("Text Ex Machina")
-                        }
-                        .tag(92)
-                        Button(action: {}) {
-                            Text("Django")
-                        }
-                        .tag(93)
-                        Button(action: {}) {
-                            Text("Tomorrow")
-                        }
-                        .tag(94)
-                        Button(action: {}) {
-                            Text("Solarized (Dark)")
-                        }
-                        .tag(95)
-                        Button(action: {}) {
-                            Text("Plastic Code Wrap")
-                        }
-                        .tag(96)
-                        Button(action: {}) {
-                            Text("Material Palenight")
-                        }
-                        .tag(97)
-                        Button(action: {}) {
-                            Text("Bespin")
-                        }
-                        .tag(98)
-                        Button(action: {}) {
-                            Text("Espresso Tutti")
-                        }
-                        .tag(99)
-                        Button(action: {}) {
-                            Text("Vibrant Tango")
-                        }
-                        .tag(100)
-                    }
-                }
-                Group {
-                    Button(action: {}) {
-                        Text("Tubster")
-                    }
-                    .tag(101)
-                    Button(action: {}) {
-                        Text("Dark Pastel")
-                    }
-                    .tag(102)
-                    Button(action: {}) {
-                        Text("Dawn")
-                    }
-                    .tag(103)
-                    Button(action: {}) {
-                        Text("Tango")
-                    }
-                    .tag(104)
-                    Button(action: {}) {
-                        Text("Clouds Midnight")
-                    }
-                    .tag(105)
-                    Button(action: {}) {
-                        Text("Glitterbomb")
-                    }
-                    .tag(106)
-                    Button(action: {}) {
-                        Text("IR White")
-                    }
-                    .tag(107)
-                }
-            }
-            .pickerStyle(.menu)
-            //Check For Theme Changes
-            .onChange(of: selectedTheme) {
-                if selectedTheme == 1 {
-                    self.theme = CodeViewTheme.bbedit
-                }
-                if selectedTheme == 2 {
-                    self.theme = CodeViewTheme.allHallowEve
-                }
-                if selectedTheme == 3 {
-                    self.theme = CodeViewTheme.idleFingers
-                }
-                if selectedTheme == 4 {
-                    self.theme = CodeViewTheme.spaceCadet
-                }
-                if selectedTheme == 5 {
-                    self.theme = CodeViewTheme.idle
-                }
-                if selectedTheme == 6 {
-                    self.theme = CodeViewTheme.oceanic
-                }
-                if selectedTheme == 7 {
-                    self.theme = CodeViewTheme.clouds
-                }
-                if selectedTheme == 8 {
-                    self.theme = CodeViewTheme.github
-                }
-                if selectedTheme == 9 {
-                    self.theme = CodeViewTheme.ryanLight
-                }
-                if selectedTheme == 10 {
-                    self.theme = CodeViewTheme.blackPearl
-                }
-                if selectedTheme == 11 {
-                    self.theme = CodeViewTheme.monoIndustrial
-                }
-                if selectedTheme == 12 {
-                    self.theme = CodeViewTheme.happyHappyJoyJoy2
-                }
-                if selectedTheme == 13 {
-                    self.theme = CodeViewTheme.cube2Media
-                }
-                if selectedTheme == 14 {
-                    self.theme = CodeViewTheme.friendshipBracelet
-                }
-                if selectedTheme == 15 {
-                    self.theme = CodeViewTheme.classicModified
-                }
-                if selectedTheme == 16 {
-                    self.theme = CodeViewTheme.amy
-                }
-                if selectedTheme == 17 {
-                    self.theme = CodeViewTheme.default
-                }
-                if selectedTheme == 18 {
-                    self.theme = CodeViewTheme.rdrak
-                }
-                if selectedTheme == 19 {
-                    self.theme = CodeViewTheme.espresso
-                }
-                if selectedTheme == 20 {
-                    self.theme = CodeViewTheme.sunburst
-                }
-                if selectedTheme == 21 {
-                    self.theme = CodeViewTheme.madeOfCode
-                }
-                if selectedTheme == 22 {
-                    self.theme = CodeViewTheme.arona
-                }
-                if selectedTheme == 23 {
-                    self.theme = CodeViewTheme.putty
-                }
-                if selectedTheme == 24 {
-                    self.theme = CodeViewTheme.nightlion
-                }
-                if selectedTheme == 25 {
-                    self.theme = CodeViewTheme.sidewalkchalk
-                }
-                if selectedTheme == 26 {
-                    self.theme = CodeViewTheme.swyphsii
-                }
-                if selectedTheme == 27 {
-                    self.theme = CodeViewTheme.iplastic
-                }
-                if selectedTheme == 28 {
-                    self.theme = CodeViewTheme.solarizedLight
-                }
-                if selectedTheme == 29 {
-                    self.theme = CodeViewTheme.macClassic
-                }
-                if selectedTheme == 30 {
-                    self.theme = CodeViewTheme.pastelsOnDark
-                }
-                if selectedTheme == 31 {
-                    self.theme = CodeViewTheme.irBlack
-                }
-                if selectedTheme == 32 {
-                    self.theme = CodeViewTheme.material
-                }
-                if selectedTheme == 33 {
-                    self.theme = CodeViewTheme.monokaiFannonedition
-                }
-                if selectedTheme == 34 {
-                    self.theme = CodeViewTheme.monokaiBright
-                }
-                if selectedTheme == 35 {
-                    self.theme = CodeViewTheme.eiffel
-                }
-                if selectedTheme == 36 {
-                    self.theme = CodeViewTheme.base16Light
-                }
-                if selectedTheme == 37 {
-                    self.theme = CodeViewTheme.oceanicMuted
-                }
-                if selectedTheme == 38 {
-                    self.theme = CodeViewTheme.summerfruit
-                }
-                if selectedTheme == 39 {
-                    self.theme = CodeViewTheme.espressoLibre
-                }
-                if selectedTheme == 40 {
-                    self.theme = CodeViewTheme.krtheme
-                }
-                if selectedTheme == 41 {
-                    self.theme = CodeViewTheme.mreq
-                }
-                if selectedTheme == 42 {
-                    self.theme = CodeViewTheme.chanfle
-                }
-                if selectedTheme == 43 {
-                    self.theme = CodeViewTheme.venom
-                }
-                if selectedTheme == 44 {
-                    self.theme = CodeViewTheme.juicy
-                }
-                if selectedTheme == 45 {
-                    self.theme = CodeViewTheme.coda
-                }
-                if selectedTheme == 46 {
-                    self.theme = CodeViewTheme.fluidvision
-                }
-                if selectedTheme == 47 {
-                    self.theme = CodeViewTheme.tomorrowNightBlue
-                }
-                if selectedTheme == 48 {
-                    self.theme = CodeViewTheme.magicwbAmiga
-                }
-                if selectedTheme == 49 {
-                    self.theme = CodeViewTheme.twilight
-                }
-                if selectedTheme == 50 {
-                    self.theme = CodeViewTheme.vibrantInk
-                }
-                if selectedTheme == 51 {
-                    self.theme = CodeViewTheme.summerSun
-                }
-                if selectedTheme == 52 {
-                    self.theme = CodeViewTheme.monokai
-                }
-                if selectedTheme == 53 {
-                    self.theme = CodeViewTheme.railsEnvy
-                }
-                if selectedTheme == 54 {
-                    self.theme = CodeViewTheme.merbivore
-                }
-                if selectedTheme == 55 {
-                    self.theme = CodeViewTheme.dracula
-                }
-                if selectedTheme == 56 {
-                    self.theme = CodeViewTheme.pastie
-                }
-                if selectedTheme == 57 {
-                    self.theme = CodeViewTheme.lowlight
-                }
-                if selectedTheme == 58 {
-                    self.theme = CodeViewTheme.spectacular
-                }
-                if selectedTheme == 59 {
-                    self.theme = CodeViewTheme.smoothy
-                }
-                if selectedTheme == 60 {
-                    self.theme = CodeViewTheme.vibrantFin
-                }
-                if selectedTheme == 61 {
-                    self.theme = CodeViewTheme.blackboard
-                }
-                if selectedTheme == 62 {
-                    self.theme = CodeViewTheme.slushPoppies
-                }
-                if selectedTheme == 63 {
-                    self.theme = CodeViewTheme.freckle
-                }
-                if selectedTheme == 64 {
-                    self.theme = CodeViewTheme.fantasyscript
-                }
-                if selectedTheme == 65 {
-                    self.theme = CodeViewTheme.tomorrowNightEighties
-                }
-                if selectedTheme == 66 {
-                    self.theme = CodeViewTheme.rhuk
-                }
-                if selectedTheme == 67 {
-                    self.theme = CodeViewTheme.toyChest
-                }
-                if selectedTheme == 68 {
-                    self.theme = CodeViewTheme.fake
-                }
-                if selectedTheme == 69 {
-                    self.theme = CodeViewTheme.emacsStrict
-                }
-                if selectedTheme == 70 {
-                    self.theme = CodeViewTheme.merbivoreSoft
-                }
-                if selectedTheme == 71 {
-                    self.theme = CodeViewTheme.fadeToGrey
-                }
-                if selectedTheme == 72 {
-                    self.theme = CodeViewTheme.monokaiSublime
-                }
-                if selectedTheme == 73 {
-                    self.theme = CodeViewTheme.johnny
-                }
-                if selectedTheme == 74 {
-                    self.theme = CodeViewTheme.railscasts
-                }
-                if selectedTheme == 75 {
-                    self.theme = CodeViewTheme.argonaut
-                }
-                if selectedTheme == 76 {
-                    self.theme = CodeViewTheme.tomorrowNightBright
-                }
-                if selectedTheme == 77 {
-                    self.theme = CodeViewTheme.lazy
-                }
-                if selectedTheme == 78 {
-                    self.theme = CodeViewTheme.tomorrowNight
-                }
-                if selectedTheme == 79 {
-                    self.theme = CodeViewTheme.bongzilla
-                }
-                if selectedTheme == 80 {
-                    self.theme = CodeViewTheme.zenburnesque
-                }
-                if selectedTheme == 81 {
-                    self.theme = CodeViewTheme.notebook
-                }
-                if selectedTheme == 82 {
-                    self.theme = CodeViewTheme.djangoSmoothy
-                }
-                if selectedTheme == 83 {
-                    self.theme = CodeViewTheme.blackboardBlack
-                }
-                if selectedTheme == 84 {
-                    self.theme = CodeViewTheme.blackPearlii
-                }
-                if selectedTheme == 85 {
-                    self.theme = CodeViewTheme.kuroir
-                }
-                if selectedTheme == 86 {
-                    self.theme = CodeViewTheme.cobalt
-                }
-                if selectedTheme == 87 {
-                    self.theme = CodeViewTheme.ayuMirage
-                }
-                if selectedTheme == 88 {
-                    self.theme = CodeViewTheme.chromeDevtools
-                }
-                if selectedTheme == 89 {
-                    self.theme = CodeViewTheme.prospettiva
-                }
-                if selectedTheme == 90 {
-                    self.theme = CodeViewTheme.espressoSoda
-                }
-                if selectedTheme == 91 {
-                    self.theme = CodeViewTheme.birdsOfParadise
-                }
-                if selectedTheme == 92 {
-                    self.theme = CodeViewTheme.textExMachina
-                }
-                if selectedTheme == 93 {
-                    self.theme = CodeViewTheme.django
-                }
-                if selectedTheme == 94 {
-                    self.theme = CodeViewTheme.tomorrow
-                }
-                if selectedTheme == 95 {
-                    self.theme = CodeViewTheme.solarizedDark
-                }
-                if selectedTheme == 96 {
-                    self.theme = CodeViewTheme.plasticcodewrap
-                }
-                if selectedTheme == 97 {
-                    self.theme = CodeViewTheme.materialPalenight
-                }
-                if selectedTheme == 98 {
-                    self.theme = CodeViewTheme.bespin
-                }
-                if selectedTheme == 99 {
-                    self.theme = CodeViewTheme.espressoTutti
-                }
-                if selectedTheme == 100 {
-                    self.theme = CodeViewTheme.vibrantTango
-                }
-                if selectedTheme == 101 {
-                    self.theme = CodeViewTheme.tubster
-                }
-                if selectedTheme == 102 {
-                    self.theme = CodeViewTheme.darkpastel
-                }
-                if selectedTheme == 103 {
-                    self.theme = CodeViewTheme.dawn
-                }
-                if selectedTheme == 104 {
-                    self.theme = CodeViewTheme.tango
-                }
-                if selectedTheme == 105 {
-                    self.theme = CodeViewTheme.cloudsMidnight
-                }
-                if selectedTheme == 106 {
-                    self.theme = CodeViewTheme.glitterbomb
-                }
-                if selectedTheme == 107 {
-                    self.theme = CodeViewTheme.irWhite
-                }
-            }
-            //Syntax Picker
-            Picker(selection: $selectedSyntax, label: Text("Syntax")) {
-                Group {
-                    Button(action: {}) {
-                        Text("APL")
-                    }
-                    .tag(1)
-                    Button(action: {}) {
-                        Text("PGP")
-                    }
-                    .tag(2)
-                    Button(action: {}) {
-                        Text("ASN")
-                    }
-                    .tag(3)
-                    Button(action: {}) {
-                        Text("C Make")
-                    }
-                    .tag(4)
-                    Button(action: {}) {
-                        Text("C")
-                    }
-                    .tag(5)
-                    Button(action: {}) {
-                        Text("C++")
-                    }
-                    .tag(6)
-                    Button(action: {}) {
-                        Text("Objective C")
-                    }
-                    .tag(7)
-                    Button(action: {}) {
-                        Text("Kotlin")
-                    }
-                    .tag(8)
-                    Button(action: {}) {
-                        Text("Scala")
-                    }
-                    .tag(9)
-                    Button(action: {}) {
-                        Text("C#")
-                    }
-                    .tag(10)
-                }
-                Group {
-                    Button(action: {}) {
-                        Text("Java")
-                    }
-                    .tag(11)
-                    Button(action: {}) {
-                        Text("Cobol")
-                    }
-                    .tag(12)
-                    Button(action: {}) {
-                        Text("Coffee Script")
-                    }
-                    .tag(13)
-                    Button(action: {}) {
-                        Text("Lisp")
-                    }
-                    .tag(14)
-                    Button(action: {}) {
-                        Text("CSS")
-                    }
-                    .tag(15)
-                    Button(action: {}) {
-                        Text("Django")
-                    }
-                    .tag(16)
-                    Button(action: {}) {
-                        Text("Docker File")
-                    }
-                    .tag(17)
-                    Button(action: {}) {
-                        Text("ERLang")
-                    }
-                    .tag(18)
-                    Button(action: {}) {
-                        Text("Fortran")
-                    }
-                    .tag(19)
-                    Button(action: {}) {
-                        Text("Go")
-                    }
-                    .tag(20)
-                }
-                Group {
-                    Button(action: {}) {
-                        Text("Groovy")
-                    }
-                    .tag(21)
-                    Button(action: {}) {
-                        Text("Haskell")
-                    }
-                    .tag(22)
-                    Button(action: {}) {
-                        Text("HTML")
-                    }
-                    .tag(23)
-                    Button(action: {}) {
-                        Text("HTTP")
-                    }
-                    .tag(24)
-                    Button(action: {}) {
-                        Text("Javascript")
-                    }
-                    .tag(25)
-                    Button(action: {}) {
-                        Text("Typescript")
-                    }
-                    .tag(26)
-                    Button(action: {}) {
-                        Text("JSON")
-                    }
-                    .tag(27)
-                    Button(action: {}) {
-                        Text("Ecma")
-                    }
-                    .tag(28)
-                    Button(action: {}) {
-                        Text("Jinja")
-                    }
-                    .tag(29)
-                    Button(action: {}) {
-                        Text("Lua")
-                    }
-                    .tag(30)
-                }
-                Group {
-                    Button(action: {}) {
-                        Text("Markdown")
-                    }
-                    .tag(31)
-                    Button(action: {}) {
-                        Text("Maths")
-                    }
-                    .tag(32)
-                    Button(action: {}) {
-                        Text("Pascal")
-                    }
-                    .tag(33)
-                    Button(action: {}) {
-                        Text("Perl")
-                    }
-                    .tag(34)
-                    Button(action: {}) {
-                        Text("PHP")
-                    }
-                    .tag(35)
-                    Button(action: {}) {
-                        Text("Powershell")
-                    }
-                    .tag(36)
-                    Button(action: {}) {
-                        Text("Properties")
-                    }
-                    .tag(37)
-                    Button(action: {}) {
-                        Text("protobuf")
-                    }
-                    .tag(38)
-                    Button(action: {}) {
-                        Text("Python")
-                    }
-                    .tag(39)
-                    Button(action: {}) {
-                        Text("R")
-                    }
-                    .tag(40)
-                }
-                Group {
-                    Button(action: {}) {
-                        Text("Ruby")
-                    }
-                    .tag(41)
-                    Button(action: {}) {
-                        Text("Rust")
-                    }
-                    .tag(42)
-                    Button(action: {}) {
-                        Text("Sass")
-                    }
-                    .tag(43)
-                    Button(action: {}) {
-                        Text("Scheme")
-                    }
-                    .tag(44)
-                    Button(action: {}) {
-                        Text("Shell")
-                    }
-                    .tag(45)
-                    Button(action: {}) {
-                        Text("SQL")
-                    }
-                    .tag(46)
-                    Button(action: {}) {
-                        Text("SQLite")
-                    }
-                    .tag(47)
-                    Button(action: {}) {
-                        Text("MySQL")
-                    }
-                    .tag(48)
-                    Button(action: {}) {
-                        Text("Latex")
-                    }
-                    .tag(49)
-                    Button(action: {}) {
-                        Text("Swift")
-                    }
-                    .tag(50)
-                }
-                Group {
-                    Button(action: {}) {
-                        Text("Text")
-                    }
-                    .tag(51)
-                    Button(action: {}) {
-                        Text("Toml")
-                    }
-                    .tag(52)
-                    Button(action: {}) {
-                        Text("VB")
-                    }
-                    .tag(53)
-                    Button(action: {}) {
-                        Text("Vue")
-                    }
-                    .tag(54)
-                    Button(action: {}) {
-                        Text("XML")
-                    }
-                    .tag(55)
-                    Button(action: {}) {
-                        Text("YAML")
-                    }
-                    .tag(56)
-                    Button(action: {}) {
-                        Text("Dart")
-                    }
-                    .tag(57)
-                    Button(action: {}) {
-                        Text("Ntriples")
-                    }
-                    .tag(58)
-                    Button(action: {}) {
-                        Text("Sparql")
-                    }
-                    .tag(59)
-                    Button(action: {}) {
-                        Text("Turtle")
-                    }
-                    .tag(60)
-                }
-            }
-            .pickerStyle(.menu)
-            //Check For Syntax Changes
-            .onChange(of: selectedSyntax) {
-                if selectedSyntax == 1 {
-                    self.syntax = CodeMode.apl
-                }
-                if selectedSyntax == 2 {
-                    self.syntax = CodeMode.pgp
-                }
-                if selectedSyntax == 3 {
-                    self.syntax = CodeMode.asn
-                }
-                if selectedSyntax == 4 {
-                    self.syntax = CodeMode.cmake
-                }
-                if selectedSyntax == 5 {
-                    self.syntax = CodeMode.c
-                }
-                if selectedSyntax == 6 {
-                    self.syntax = CodeMode.cplus
-                }
-                if selectedSyntax == 7 {
-                    self.syntax = CodeMode.objc
-                }
-                if selectedSyntax == 8 {
-                    self.syntax = CodeMode.kotlin
-                }
-                if selectedSyntax == 9 {
-                    self.syntax = CodeMode.scala
-                }
-                if selectedSyntax == 10 {
-                    self.syntax = CodeMode.csharp
-                }
-                if selectedSyntax == 11 {
-                    self.syntax = CodeMode.java
-                }
-                if selectedSyntax == 12 {
-                    self.syntax = CodeMode.cobol
-                }
-                if selectedSyntax == 13 {
-                    self.syntax = CodeMode.coffeescript
-                }
-                if selectedSyntax == 14 {
-                    self.syntax = CodeMode.lisp
-                }
-                if selectedSyntax == 15 {
-                    self.syntax = CodeMode.css
-                }
-                if selectedSyntax == 16 {
-                    self.syntax = CodeMode.django
-                }
-                if selectedSyntax == 17 {
-                    self.syntax = CodeMode.dockerfile
-                }
-                if selectedSyntax == 18 {
-                    self.syntax = CodeMode.erlang
-                }
-                if selectedSyntax == 19 {
-                    self.syntax = CodeMode.fortran
-                }
-                if selectedSyntax == 20 {
-                    self.syntax = CodeMode.go
-                }
-                if selectedSyntax == 21 {
-                    self.syntax = CodeMode.groovy
-                }
-                if selectedSyntax == 22 {
-                    self.syntax = CodeMode.haskell
-                }
-                if selectedSyntax == 23 {
-                    self.syntax = CodeMode.html
-                }
-                if selectedSyntax == 24 {
-                    self.syntax = CodeMode.http
-                }
-                if selectedSyntax == 25 {
-                    self.syntax = CodeMode.javascript
-                }
-                if selectedSyntax == 26 {
-                    self.syntax = CodeMode.typescript
-                }
-                if selectedSyntax == 27 {
-                    self.syntax = CodeMode.json
-                }
-                if selectedSyntax == 28 {
-                    self.syntax = CodeMode.ecma
-                }
-                if selectedSyntax == 29 {
-                    self.syntax = CodeMode.jinja
-                }
-                if selectedSyntax == 30 {
-                    self.syntax = CodeMode.lua
-                }
-                if selectedSyntax == 31 {
-                    self.syntax = CodeMode.markdown
-                }
-                if selectedSyntax == 32 {
-                    self.syntax = CodeMode.maths
-                }
-                if selectedSyntax == 33 {
-                    self.syntax = CodeMode.pascal
-                }
-                if selectedSyntax == 34 {
-                    self.syntax = CodeMode.perl
-                }
-                if selectedSyntax == 35 {
-                    self.syntax = CodeMode.php
-                }
-                if selectedSyntax == 36 {
-                    self.syntax = CodeMode.powershell
-                }
-                if selectedSyntax == 37 {
-                    self.syntax = CodeMode.properties
-                }
-                if selectedSyntax == 38 {
-                    self.syntax = CodeMode.protobuf
-                }
-                if selectedSyntax == 39 {
-                    self.syntax = CodeMode.python
-                }
-                if selectedSyntax == 40 {
-                    self.syntax = CodeMode.r
-                }
-                if selectedSyntax == 41 {
-                    self.syntax = CodeMode.ruby
-                }
-                if selectedSyntax == 42 {
-                    self.syntax = CodeMode.rust
-                }
-                if selectedSyntax == 43 {
-                    self.syntax = CodeMode.sass
-                }
-                if selectedSyntax == 44 {
-                    self.syntax = CodeMode.scheme
-                }
-                if selectedSyntax == 45 {
-                    self.syntax = CodeMode.shell
-                }
-                if selectedSyntax == 46 {
-                    self.syntax = CodeMode.sql
-                }
-                if selectedSyntax == 47 {
-                    self.syntax = CodeMode.sqllite
-                }
-                if selectedSyntax == 48 {
-                    self.syntax = CodeMode.mysql
-                }
-                if selectedSyntax == 49 {
-                    self.syntax = CodeMode.latex
-                }
-                if selectedSyntax == 50 {
-                    self.syntax = CodeMode.swift
-                }
-                if selectedSyntax == 51 {
-                    self.syntax = CodeMode.text
-                }
-                if selectedSyntax == 52 {
-                    self.syntax = CodeMode.toml
-                }
-                if selectedSyntax == 53 {
-                    self.syntax = CodeMode.vb
-                }
-                if selectedSyntax == 54 {
-                    self.syntax = CodeMode.vue
-                }
-                if selectedSyntax == 55 {
-                    self.syntax = CodeMode.xml
-                }
-                if selectedSyntax == 56 {
-                    self.syntax = CodeMode.yaml
-                }
-                if selectedSyntax == 57 {
-                    self.syntax = CodeMode.dart
-                }
-                if selectedSyntax == 58 {
-                    self.syntax = CodeMode.ntriples
-                }
-                if selectedSyntax == 59 {
-                    self.syntax = CodeMode.sparql
-                }
-                if selectedSyntax == 60 {
-                    self.syntax = CodeMode.turtle
-                }
-            }
-        }
-        .padding(.all)
-    }
-}
-
-struct EditorSettings: View {
-    //Store Editor Settings In User Defaults
-    @AppStorage("lineWrapping") var lineWrapping = true
-    @AppStorage("showInvisibleCharacters") var showInvisibleCharacters = false
-    @AppStorage("fontSize") var fontSize = 12
-    var body: some View {
-        Form {
-            GroupBox(label: Label("Editor Options", systemImage: "slider.horizontal.3")) {
-                //Change Font Size, Toggle Line Wrapping And Toggle Invisible Characters
-                VStack {
-                    HStack {
-                        Spacer()
-                        Stepper("Font Size - \(fontSize)", value: $fontSize, in: 1...120)
-                        Spacer()
-                    }
-                    Toggle(isOn: $lineWrapping) {
-                        Text("Line Wrapping")
-                    }
-                    .toggleStyle(.switch)
-                    Toggle(isOn: $showInvisibleCharacters) {
-                        Text("Show Invisible Characters")
-                    }
-                    .toggleStyle(.switch)
+            GroupBox(label: Label("More", systemImage: "ellipsis.circle")) {
+                HStack {
+                    Spacer()
+                    Button(action: {SendEmail.send()}) {
+                        Text("Send Feedback...")
+                    }
+                    Spacer()
+                    Button(action: {openURL(URL(string: "https://github.com/markydoodled/QuickCode")!)}) {
+                        Text("GitHub Repository...")
+                    }
+                    Spacer()
+                    Button(action: {openURL(URL(string: "https://markydoodled.com/")!)}) {
+                        Text("Portfolio...")
+                    }
+                    Spacer()
                 }
             }
         }
@@ -1354,7 +824,7 @@ struct EditorSettings: View {
 class SendEmail: NSObject {
     static func send() {
         let service = NSSharingService(named: NSSharingService.Name.composeEmail)!
-        service.recipients = ["markhoward2005@gmail.com"]
+        service.recipients = ["markhoward@markydoodled.com"]
         service.subject = "QuickCode Feedback"
         service.perform(withItems: ["Please Fill Out All Relevant Sections:", "Report A Bug - ", "Rate The App - ", "Suggest An Improvement - "])
     }

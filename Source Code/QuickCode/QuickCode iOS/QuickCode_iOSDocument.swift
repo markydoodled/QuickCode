@@ -24,7 +24,7 @@ struct QuickCode_iOSDocument: FileDocument {
     }
 
     //Set Readable File Types
-    static var readableContentTypes: [UTType] { [.quickcodeText, .swiftSource, .plainText, .utf8PlainText, .utf16PlainText, .utf16ExternalPlainText, .utf8TabSeparatedText, .xml, .yaml, .json, .html, .assemblyLanguageSource, .cHeader, .cSource, .cPlusPlusHeader, .cPlusPlusSource, .objectiveCPlusPlusSource, .objectiveCSource, .appleScript, .javaScript, .shellScript, .pythonScript, .rubyScript, .perlScript, .phpScript] }
+    static var readableContentTypes: [UTType] { [.quickcodeText, .assemblyLanguageSource, .cHeader, .cSource, .cPlusPlusHeader, .cPlusPlusSource, .objectiveCPlusPlusSource, .objectiveCSource, .swiftSource, .delimitedText, .commaSeparatedText, .tabSeparatedText, .utf8TabSeparatedText, .xml, .yaml, .json, .html, .propertyList, .xmlPropertyList, .binaryPropertyList, .script, .appleScript, .javaScript, .osaScript, .osaScriptBundle, .makefile, .shellScript, .pythonScript, .rubyScript, .perlScript, .phpScript, .text, .plainText, .utf8PlainText, .utf16PlainText, .utf16ExternalPlainText, .data, .sourceCode] }
 
     //Set How To Read Documents
     init(configuration: ReadConfiguration) throws {
