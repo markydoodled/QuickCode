@@ -1,9 +1,9 @@
-# QuickCode
-A Simple Document-Based Code Editor For iOS, macOS And iPadOS. 
+# QuickCode 
+A Simple And Customisable Document-Based Code Editor For iOS, macOS And iPadOS. 
 
-## App Store Link
-
-[Click Here...](https://apps.apple.com/gb/app/quickcode-code-editor/id6480412910)
+<a href="https://apps.apple.com/gb/app/quickcode-code-editor/id6480412910?itscg=30200&itsct=apps_box_badge&mttnsubad=6480412910" style="display: inline-block;">
+<img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1713052800" alt="Download on the App Store" style="width: 246px; height: 82px; vertical-align: middle; object-fit: contain;" />
+</a>
 
 ## Features
 
@@ -13,6 +13,8 @@ A Simple Document-Based Code Editor For iOS, macOS And iPadOS.
 - Syntax Highlighting
 - Editor Themes
 - In-App File Metadata Viewer
+- App Clip Support
+- macOS Dock Menu Quick Actions
 
 ## GitHub Releases
 
