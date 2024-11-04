@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct QuickCodeApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         //Create Document Window For Editor
         DocumentGroup(newDocument: QuickCodeDocument()) { file in
@@ -34,7 +35,6 @@ extension FocusedValues {
     struct DocumentFocusedValues: FocusedValueKey {
         typealias Value = Binding<QuickCodeDocument>
     }
-
     var document: Binding<QuickCodeDocument>? {
         get {
             self[DocumentFocusedValues.self]
@@ -42,5 +42,17 @@ extension FocusedValues {
         set {
             self[DocumentFocusedValues.self] = newValue
         }
+    }
+}
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
+        let menu = NSMenu()
+        menu.addItem(withTitle: "New Document", action: #selector(newDocument), keyEquivalent: "")
+        return menu
+    }
+    
+    @objc func newDocument() {
+        NSDocumentController().newDocument(Any?.self)
     }
 }

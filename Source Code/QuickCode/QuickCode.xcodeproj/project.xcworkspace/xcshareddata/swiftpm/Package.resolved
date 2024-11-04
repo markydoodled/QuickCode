@@ -1,22 +1,40 @@
 {
-  "originHash" : "402f928b17f965f511d4ad1b112781f768cd55a77286e33a103d3cde6d1ead9e",
+  "originHash" : "45d45e045b5df725ccbbaa34156ab35bd9291b3e3c25af5a57a28492f1108785",
   "pins" : [
     {
       "identity" : "codemirror-swiftui",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Pictarine/CodeMirror-SwiftUI",
+      "location" : "https://github.com/markydoodled/CodeMirror-SwiftUI.git",
       "state" : {
         "branch" : "master",
         "revision" : "91eb30d2ea54c136de2540cacaeb95b9ab5de8e0"
       }
     },
     {
-      "identity" : "documentkit",
+      "identity" : "printingkit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/danielsaidi/DocumentKit.git",
+      "location" : "https://github.com/danielsaidi/PrintingKit.git",
       "state" : {
-        "revision" : "361f94c6f46935ff9ec91caee4245611ee6f3136",
-        "version" : "0.3.0"
+        "revision" : "018949ded11713f7c6c6301259f42f36bcb78917",
+        "version" : "0.6.0"
+      }
+    },
+    {
+      "identity" : "storekitplus",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/StoreKitPlus.git",
+      "state" : {
+        "revision" : "6ad6fdb9aa971a378ebf7c4904034183e66a2958",
+        "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "swiftuikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/SwiftUIKit.git",
+      "state" : {
+        "revision" : "7ec03cf8ea6d5a5dfc4739c8c55f370d195ca5d5",
+        "version" : "5.0.0"
       }
     }
   ],

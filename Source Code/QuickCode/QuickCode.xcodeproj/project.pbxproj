@@ -3,38 +3,59 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D57E00762BC181DD0061DFC7 /* DocumentKit in Frameworks */ = {isa = PBXBuildFile; productRef = D57E00752BC181DD0061DFC7 /* DocumentKit */; };
-		D596C72D2BBACC1E008D0E9A /* QuickCodeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C72C2BBACC1E008D0E9A /* QuickCodeApp.swift */; };
-		D596C72F2BBACC1E008D0E9A /* QuickCodeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C72E2BBACC1E008D0E9A /* QuickCodeDocument.swift */; };
-		D596C7312BBACC1E008D0E9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7302BBACC1E008D0E9A /* ContentView.swift */; };
-		D596C7332BBACC20008D0E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C7322BBACC20008D0E9A /* Assets.xcassets */; };
-		D596C7362BBACC20008D0E9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C7352BBACC20008D0E9A /* Preview Assets.xcassets */; };
-		D596C7452BBACC9F008D0E9A /* QuickCode_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7442BBACC9F008D0E9A /* QuickCode_iOSApp.swift */; };
-		D596C7472BBACC9F008D0E9A /* QuickCode_iOSDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7462BBACC9F008D0E9A /* QuickCode_iOSDocument.swift */; };
-		D596C7492BBACC9F008D0E9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7482BBACC9F008D0E9A /* ContentView.swift */; };
-		D596C74B2BBACCA1008D0E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C74A2BBACCA1008D0E9A /* Assets.xcassets */; };
-		D596C74E2BBACCA1008D0E9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D596C74D2BBACCA1008D0E9A /* Preview Assets.xcassets */; };
-		D596C7562BBACE3B008D0E9A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D596C7552BBACE3B008D0E9A /* Settings.bundle */; };
-		D596C7632BBAD0C5008D0E9A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7622BBAD0C5008D0E9A /* SettingsView.swift */; };
-		D596C7652BBAD422008D0E9A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D596C7642BBAD422008D0E9A /* SettingsView.swift */; };
-		D5E1CD7F2BBAFDEF0012295A /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD7E2BBAFDEF0012295A /* CodeMirror-SwiftUI */; };
-		D5E1CD802BBAFDEF0012295A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD7E2BBAFDEF0012295A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		D5E1CD832BBAFE0E0012295A /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */; };
-		D5E1CD842BBAFE0E0012295A /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D56F55552CC9947C00A3D0A4 /* QuickCode iOS App Clip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = D56F55462CC9947A00A3D0A4 /* QuickCode iOS App Clip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D56F55A52CCEFE0A00A3D0A4 /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D56F55A42CCEFE0A00A3D0A4 /* CodeMirror-SwiftUI */; };
+		D56F55A62CCEFE2100A3D0A4 /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D56F55A42CCEFE0A00A3D0A4 /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D56F55A82CCEFE2900A3D0A4 /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D56F55A72CCEFE2900A3D0A4 /* CodeMirror-SwiftUI */; };
+		D56F55A92CCEFE2900A3D0A4 /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D56F55A72CCEFE2900A3D0A4 /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D56F55AB2CCEFE3100A3D0A4 /* CodeMirror-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D56F55AA2CCEFE3100A3D0A4 /* CodeMirror-SwiftUI */; };
+		D56F55AC2CCEFE3100A3D0A4 /* CodeMirror-SwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D56F55AA2CCEFE3100A3D0A4 /* CodeMirror-SwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D56F55532CC9947C00A3D0A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D596C7212BBACC1E008D0E9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D56F55452CC9947A00A3D0A4;
+			remoteInfo = "QuickCode iOS App Clip";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		D56F555A2CC9947C00A3D0A4 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				D56F55552CC9947C00A3D0A4 /* QuickCode iOS App Clip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D56F555E2CCAEB1D00A3D0A4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D56F55AC2CCEFE3100A3D0A4 /* CodeMirror-SwiftUI in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D596C75B2BBACF28008D0E9A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D5E1CD842BBAFE0E0012295A /* CodeMirror-SwiftUI in Embed Frameworks */,
+				D56F55A92CCEFE2900A3D0A4 /* CodeMirror-SwiftUI in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,7 +66,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D5E1CD802BBAFDEF0012295A /* CodeMirror-SwiftUI in Embed Frameworks */,
+				D56F55A62CCEFE2100A3D0A4 /* CodeMirror-SwiftUI in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,32 +74,55 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D56F55462CC9947A00A3D0A4 /* QuickCode iOS App Clip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QuickCode iOS App Clip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D596C7292BBACC1E008D0E9A /* QuickCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D596C72C2BBACC1E008D0E9A /* QuickCodeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCodeApp.swift; sourceTree = "<group>"; };
-		D596C72E2BBACC1E008D0E9A /* QuickCodeDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCodeDocument.swift; sourceTree = "<group>"; };
-		D596C7302BBACC1E008D0E9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D596C7322BBACC20008D0E9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D596C7352BBACC20008D0E9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D596C7372BBACC20008D0E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D596C7382BBACC20008D0E9A /* QuickCode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickCode.entitlements; sourceTree = "<group>"; };
 		D596C7422BBACC9F008D0E9A /* QuickCode iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QuickCode iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D596C7442BBACC9F008D0E9A /* QuickCode_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCode_iOSApp.swift; sourceTree = "<group>"; };
-		D596C7462BBACC9F008D0E9A /* QuickCode_iOSDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCode_iOSDocument.swift; sourceTree = "<group>"; };
-		D596C7482BBACC9F008D0E9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D596C74A2BBACCA1008D0E9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D596C74D2BBACCA1008D0E9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D596C74F2BBACCA1008D0E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D596C7552BBACE3B008D0E9A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		D596C7622BBAD0C5008D0E9A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		D596C7642BBAD422008D0E9A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D56F55562CC9947C00A3D0A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D56F55452CC9947A00A3D0A4 /* QuickCode iOS App Clip */;
+		};
+		D56F55742CCE7AE900A3D0A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D596C7412BBACC9F008D0E9A /* QuickCode iOS */;
+		};
+		D56F55892CCE7AF300A3D0A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D596C7282BBACC1E008D0E9A /* QuickCode */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D56F55472CC9947A00A3D0A4 /* QuickCode iOS App Clip */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D56F55562CC9947C00A3D0A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "QuickCode iOS App Clip"; sourceTree = "<group>"; };
+		D56F556B2CCE7AE900A3D0A4 /* QuickCode iOS */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D56F55742CCE7AE900A3D0A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "QuickCode iOS"; sourceTree = "<group>"; };
+		D56F55812CCE7AF300A3D0A4 /* QuickCode */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D56F55892CCE7AF300A3D0A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = QuickCode; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		D56F55432CC9947A00A3D0A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D56F55AB2CCEFE3100A3D0A4 /* CodeMirror-SwiftUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D596C7262BBACC1E008D0E9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5E1CD7F2BBAFDEF0012295A /* CodeMirror-SwiftUI in Frameworks */,
+				D56F55A52CCEFE0A00A3D0A4 /* CodeMirror-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,8 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D57E00762BC181DD0061DFC7 /* DocumentKit in Frameworks */,
-				D5E1CD832BBAFE0E0012295A /* CodeMirror-SwiftUI in Frameworks */,
+				D56F55A82CCEFE2900A3D0A4 /* CodeMirror-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,8 +140,9 @@
 		D596C7202BBACC1E008D0E9A = {
 			isa = PBXGroup;
 			children = (
-				D596C72B2BBACC1E008D0E9A /* QuickCode */,
-				D596C7432BBACC9F008D0E9A /* QuickCode iOS */,
+				D56F55812CCE7AF300A3D0A4 /* QuickCode */,
+				D56F556B2CCE7AE900A3D0A4 /* QuickCode iOS */,
+				D56F55472CC9947A00A3D0A4 /* QuickCode iOS App Clip */,
 				D596C72A2BBACC1E008D0E9A /* Products */,
 				D596C7572BBACF28008D0E9A /* Frameworks */,
 			);
@@ -109,54 +153,9 @@
 			children = (
 				D596C7292BBACC1E008D0E9A /* QuickCode.app */,
 				D596C7422BBACC9F008D0E9A /* QuickCode iOS.app */,
+				D56F55462CC9947A00A3D0A4 /* QuickCode iOS App Clip.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D596C72B2BBACC1E008D0E9A /* QuickCode */ = {
-			isa = PBXGroup;
-			children = (
-				D596C72C2BBACC1E008D0E9A /* QuickCodeApp.swift */,
-				D596C72E2BBACC1E008D0E9A /* QuickCodeDocument.swift */,
-				D596C7302BBACC1E008D0E9A /* ContentView.swift */,
-				D596C7322BBACC20008D0E9A /* Assets.xcassets */,
-				D596C7372BBACC20008D0E9A /* Info.plist */,
-				D596C7382BBACC20008D0E9A /* QuickCode.entitlements */,
-				D596C7342BBACC20008D0E9A /* Preview Content */,
-				D596C7622BBAD0C5008D0E9A /* SettingsView.swift */,
-			);
-			path = QuickCode;
-			sourceTree = "<group>";
-		};
-		D596C7342BBACC20008D0E9A /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D596C7352BBACC20008D0E9A /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		D596C7432BBACC9F008D0E9A /* QuickCode iOS */ = {
-			isa = PBXGroup;
-			children = (
-				D596C7442BBACC9F008D0E9A /* QuickCode_iOSApp.swift */,
-				D596C7462BBACC9F008D0E9A /* QuickCode_iOSDocument.swift */,
-				D596C7482BBACC9F008D0E9A /* ContentView.swift */,
-				D596C74A2BBACCA1008D0E9A /* Assets.xcassets */,
-				D596C74F2BBACCA1008D0E9A /* Info.plist */,
-				D596C74C2BBACCA1008D0E9A /* Preview Content */,
-				D596C7552BBACE3B008D0E9A /* Settings.bundle */,
-				D596C7642BBAD422008D0E9A /* SettingsView.swift */,
-			);
-			path = "QuickCode iOS";
-			sourceTree = "<group>";
-		};
-		D596C74C2BBACCA1008D0E9A /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D596C74D2BBACCA1008D0E9A /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		D596C7572BBACF28008D0E9A /* Frameworks */ = {
@@ -169,6 +168,30 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D56F55452CC9947A00A3D0A4 /* QuickCode iOS App Clip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D56F55572CC9947C00A3D0A4 /* Build configuration list for PBXNativeTarget "QuickCode iOS App Clip" */;
+			buildPhases = (
+				D56F55422CC9947A00A3D0A4 /* Sources */,
+				D56F55432CC9947A00A3D0A4 /* Frameworks */,
+				D56F55442CC9947A00A3D0A4 /* Resources */,
+				D56F555E2CCAEB1D00A3D0A4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D56F55472CC9947A00A3D0A4 /* QuickCode iOS App Clip */,
+			);
+			name = "QuickCode iOS App Clip";
+			packageProductDependencies = (
+				D56F55AA2CCEFE3100A3D0A4 /* CodeMirror-SwiftUI */,
+			);
+			productName = "QuickCode iOS App Clip";
+			productReference = D56F55462CC9947A00A3D0A4 /* QuickCode iOS App Clip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
 		D596C7282BBACC1E008D0E9A /* QuickCode */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D596C73B2BBACC20008D0E9A /* Build configuration list for PBXNativeTarget "QuickCode" */;
@@ -182,9 +205,12 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				D56F55812CCE7AF300A3D0A4 /* QuickCode */,
+			);
 			name = QuickCode;
 			packageProductDependencies = (
-				D5E1CD7E2BBAFDEF0012295A /* CodeMirror-SwiftUI */,
+				D56F55A42CCEFE0A00A3D0A4 /* CodeMirror-SwiftUI */,
 			);
 			productName = QuickCode;
 			productReference = D596C7292BBACC1E008D0E9A /* QuickCode.app */;
@@ -198,15 +224,19 @@
 				D596C73F2BBACC9F008D0E9A /* Frameworks */,
 				D596C7402BBACC9F008D0E9A /* Resources */,
 				D596C75B2BBACF28008D0E9A /* Embed Frameworks */,
+				D56F555A2CC9947C00A3D0A4 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D56F55542CC9947C00A3D0A4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D56F556B2CCE7AE900A3D0A4 /* QuickCode iOS */,
 			);
 			name = "QuickCode iOS";
 			packageProductDependencies = (
-				D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */,
-				D57E00752BC181DD0061DFC7 /* DocumentKit */,
+				D56F55A72CCEFE2900A3D0A4 /* CodeMirror-SwiftUI */,
 			);
 			productName = "QuickCode iOS";
 			productReference = D596C7422BBACC9F008D0E9A /* QuickCode iOS.app */;
@@ -219,9 +249,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					D56F55452CC9947A00A3D0A4 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					D596C7282BBACC1E008D0E9A = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -240,8 +273,10 @@
 			);
 			mainGroup = D596C7202BBACC1E008D0E9A;
 			packageReferences = (
-				D5E1CD7D2BBAFDE00012295A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */,
-				D57E00742BC181DD0061DFC7 /* XCRemoteSwiftPackageReference "DocumentKit" */,
+				D56F55A02CCED29F00A3D0A4 /* XCRemoteSwiftPackageReference "SwiftUIKit" */,
+				D56F55A12CCED2C300A3D0A4 /* XCRemoteSwiftPackageReference "StoreKitPlus" */,
+				D56F55A22CCED39D00A3D0A4 /* XCRemoteSwiftPackageReference "PrintingKit" */,
+				D56F55A32CCEFE0A00A3D0A4 /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */,
 			);
 			productRefGroup = D596C72A2BBACC1E008D0E9A /* Products */;
 			projectDirPath = "";
@@ -249,17 +284,23 @@
 			targets = (
 				D596C7282BBACC1E008D0E9A /* QuickCode */,
 				D596C7412BBACC9F008D0E9A /* QuickCode iOS */,
+				D56F55452CC9947A00A3D0A4 /* QuickCode iOS App Clip */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D56F55442CC9947A00A3D0A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D596C7272BBACC1E008D0E9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D596C7362BBACC20008D0E9A /* Preview Assets.xcassets in Resources */,
-				D596C7332BBACC20008D0E9A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,23 +308,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D596C74E2BBACCA1008D0E9A /* Preview Assets.xcassets in Resources */,
-				D596C7562BBACE3B008D0E9A /* Settings.bundle in Resources */,
-				D596C74B2BBACCA1008D0E9A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D56F55422CC9947A00A3D0A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D596C7252BBACC1E008D0E9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D596C72D2BBACC1E008D0E9A /* QuickCodeApp.swift in Sources */,
-				D596C7632BBAD0C5008D0E9A /* SettingsView.swift in Sources */,
-				D596C72F2BBACC1E008D0E9A /* QuickCodeDocument.swift in Sources */,
-				D596C7312BBACC1E008D0E9A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,16 +332,99 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D596C7452BBACC9F008D0E9A /* QuickCode_iOSApp.swift in Sources */,
-				D596C7652BBAD422008D0E9A /* SettingsView.swift in Sources */,
-				D596C7472BBACC9F008D0E9A /* QuickCode_iOSDocument.swift in Sources */,
-				D596C7492BBACC9F008D0E9A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D56F55542CC9947C00A3D0A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D56F55452CC9947A00A3D0A4 /* QuickCode iOS App Clip */;
+			targetProxy = D56F55532CC9947C00A3D0A4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		D56F55582CC9947C00A3D0A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "QuickCode iOS App Clip/QuickCode_iOS_App_Clip.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 9;
+				DEVELOPMENT_ASSET_PATHS = "\"QuickCode iOS App Clip/Preview Content\"";
+				DEVELOPMENT_TEAM = ZWASU9HFBU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "QuickCode iOS App Clip/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = QuickCode;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MSJ.QuickCode.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D56F55592CC9947C00A3D0A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "QuickCode iOS App Clip/QuickCode_iOS_App_Clip.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 9;
+				DEVELOPMENT_ASSET_PATHS = "\"QuickCode iOS App Clip/Preview Content\"";
+				DEVELOPMENT_TEAM = ZWASU9HFBU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "QuickCode iOS App Clip/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = QuickCode;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MSJ.QuickCode.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		D596C7392BBACC20008D0E9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -335,6 +459,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -399,6 +524,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -429,7 +555,8 @@
 				CODE_SIGN_ENTITLEMENTS = QuickCode/QuickCode.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 9;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickCode/Preview Content\"";
 				DEVELOPMENT_TEAM = ZWASU9HFBU;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -442,7 +569,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MSJ.QuickCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -458,7 +585,8 @@
 				CODE_SIGN_ENTITLEMENTS = QuickCode/QuickCode.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 9;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickCode/Preview Content\"";
 				DEVELOPMENT_TEAM = ZWASU9HFBU;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -471,7 +599,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MSJ.QuickCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -485,7 +613,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickCode iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = ZWASU9HFBU;
 				ENABLE_PREVIEWS = YES;
@@ -505,7 +633,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MSJ.QuickCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -525,7 +653,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickCode iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = ZWASU9HFBU;
 				ENABLE_PREVIEWS = YES;
@@ -545,7 +673,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MSJ.QuickCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -563,6 +691,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D56F55572CC9947C00A3D0A4 /* Build configuration list for PBXNativeTarget "QuickCode iOS App Clip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D56F55582CC9947C00A3D0A4 /* Debug */,
+				D56F55592CC9947C00A3D0A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D596C7242BBACC1E008D0E9A /* Build configuration list for PBXProject "QuickCode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -593,17 +730,33 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D57E00742BC181DD0061DFC7 /* XCRemoteSwiftPackageReference "DocumentKit" */ = {
+		D56F55A02CCED29F00A3D0A4 /* XCRemoteSwiftPackageReference "SwiftUIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielsaidi/DocumentKit.git";
+			repositoryURL = "https://github.com/danielsaidi/SwiftUIKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.0;
+				minimumVersion = 5.0.0;
 			};
 		};
-		D5E1CD7D2BBAFDE00012295A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */ = {
+		D56F55A12CCED2C300A3D0A4 /* XCRemoteSwiftPackageReference "StoreKitPlus" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Pictarine/CodeMirror-SwiftUI";
+			repositoryURL = "https://github.com/danielsaidi/StoreKitPlus.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+		D56F55A22CCED39D00A3D0A4 /* XCRemoteSwiftPackageReference "PrintingKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/PrintingKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
+		D56F55A32CCEFE0A00A3D0A4 /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markydoodled/CodeMirror-SwiftUI.git";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -612,19 +765,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D57E00752BC181DD0061DFC7 /* DocumentKit */ = {
+		D56F55A42CCEFE0A00A3D0A4 /* CodeMirror-SwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D57E00742BC181DD0061DFC7 /* XCRemoteSwiftPackageReference "DocumentKit" */;
-			productName = DocumentKit;
-		};
-		D5E1CD7E2BBAFDEF0012295A /* CodeMirror-SwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5E1CD7D2BBAFDE00012295A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
+			package = D56F55A32CCEFE0A00A3D0A4 /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
 			productName = "CodeMirror-SwiftUI";
 		};
-		D5E1CD822BBAFE0E0012295A /* CodeMirror-SwiftUI */ = {
+		D56F55A72CCEFE2900A3D0A4 /* CodeMirror-SwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D5E1CD7D2BBAFDE00012295A /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
+			package = D56F55A32CCEFE0A00A3D0A4 /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
+			productName = "CodeMirror-SwiftUI";
+		};
+		D56F55AA2CCEFE3100A3D0A4 /* CodeMirror-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D56F55A32CCEFE0A00A3D0A4 /* XCRemoteSwiftPackageReference "CodeMirror-SwiftUI" */;
 			productName = "CodeMirror-SwiftUI";
 		};
 /* End XCSwiftPackageProductDependency section */
