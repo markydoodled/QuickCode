@@ -792,7 +792,7 @@ struct SettingsView: View {
                     }
                     HStack {
                         Spacer()
-                        Text("Build - \(Text("9").bold())")
+                        Text("Build - \(Text("10").bold())")
                         Spacer()
                     }
                 }
