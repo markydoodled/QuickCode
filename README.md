@@ -13,7 +13,7 @@ A Simple And Customisable Document-Based Code Editor For iOS, macOS And iPadOS.
 - Syntax Highlighting
 - Editor Themes
 - In-App File Metadata Viewer
-- App Clip Support
+- App Clip Support - [Click To Launch...](https://appclip.apple.com/id?p=com.MSJ.QuickCode.Clip)
 - macOS Dock Menu Quick Actions
 
 ## GitHub Releases
